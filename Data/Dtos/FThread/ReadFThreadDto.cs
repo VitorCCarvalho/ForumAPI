@@ -1,11 +1,9 @@
-﻿using Microsoft.Extensions.Hosting;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace ForumApp.Models;
+namespace ForumApp.Data.Dtos.FThread;
 
-public class FThread
+public class ReadFThreadDto
 {
-    [Key]
     public int Id { get; set; }
     [Required]
     public int ForumID { get; set; }
@@ -15,11 +13,9 @@ public class FThread
     [Required(ErrorMessage = "Text is required.")]
     [Range(3, 2000, ErrorMessage = "Text need to have between 3 and 2000 characters.")]
     public string Text { get; set; }
-    public bool? Sticky { get; set; } = false;
-    public bool? Active { get; set; } = true;
+    public bool? Sticky { get; set; }
+    public bool? Active { get; set; } 
     public DateTime DateCreated { get; set; } = DateTime.Now;
     public int StartedByUserId { get; set; }
     public bool? Locked { get; set; } = false;
-    public virtual ICollection<Post> Posts { get; set; }
-
 }
