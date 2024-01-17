@@ -9,7 +9,9 @@ public class FThreadProfile : Profile
     public FThreadProfile()
     {
         CreateMap<CreateFThreadDto, FThread>();
-        CreateMap<FThread, ReadFThreadDto>();
         CreateMap<UpdateFThreadDto, FThread>();
+        CreateMap<FThread, ReadFThreadDto>()
+            .ForMember(fthreadDto => fthreadDto.Posts,
+                opt => opt.MapFrom(fthread => fthread.Posts));
     }
 }

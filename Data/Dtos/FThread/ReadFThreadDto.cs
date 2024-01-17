@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using ForumApp.Data.Dtos.Post;
 
 namespace ForumApp.Data.Dtos.FThread;
 
@@ -18,4 +19,6 @@ public class ReadFThreadDto
     public DateTime DateCreated { get; set; } = DateTime.Now;
     public int StartedByUserId { get; set; }
     public bool? Locked { get; set; } = false;
+    public ICollection<ReadPostDto> Posts { get; set; }
+
 }

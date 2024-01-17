@@ -30,23 +30,29 @@ public class ForumController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<ReadForumDto> GetForums([FromQuery] int take = 50,[FromQuery] string? nomeForum = null)
+    public IEnumerable<ReadForumDto> GetForums([FromQuery] int take = 50,[FromQuery] int? forumId = null)
     {
-        if(nomeForum == null)
+        if(forumId == null)
         {
             return _mapper.Map<List<ReadForumDto>>(_context.Forums.Take(take).ToList());
         }
         else
         {
             return _mapper.Map<List<ReadForumDto>>(_context.Forums.Take(take).
-                                                    Where(forum => forum.Name == nomeForum));
+                                                    Where(forum => forum.Id == forumId));
         }
     }
 
-    [HttpPut("{name}")]
-    public IActionResult PutForum(string name, [FromBody] UpdateForumDto dto)
+    [HttpGet("{forumId}")]
+    public ReadForumDto GetForumsById(int forumId, [FromQuery] int take = 50)
     {
-        var forum = _context.Forums.FirstOrDefault(forum => forum.Name == name);
+        return _mapper.Map<ReadForumDto>(_context.Forums.FirstOrDefault(forum => forum.Id == forumId));
+    }
+
+    [HttpPut("{forumId}")]
+    public IActionResult PutForum(int forumId, [FromBody] UpdateForumDto dto)
+    {
+        var forum = _context.Forums.FirstOrDefault(forum => forum.Id == forumId);
         if(forum == null)
         {
             return NotFound();
@@ -56,10 +62,10 @@ public class ForumController : ControllerBase
         return NoContent();
     }
 
-    [HttpPatch("{name}")]
-    public IActionResult PatchForum(string name, JsonPatchDocument<UpdateForumDto> patch)
+    [HttpPatch("{forumId}")]
+    public IActionResult PatchForum(int forumId, JsonPatchDocument<UpdateForumDto> patch)
     {
-        var forum = _context.Forums.FirstOrDefault(forum => forum.Name == name);
+        var forum = _context.Forums.FirstOrDefault(forum => forum.Id == forumId);
         if (forum == null)
         {
             return NotFound();
@@ -77,10 +83,10 @@ public class ForumController : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete("{name}")]
-    public IActionResult DeleteForum(string name)
+    [HttpDelete("{forumId}")]
+    public IActionResult DeleteForum(int forumId)
     {
-        var forum = _context.Forums.FirstOrDefault(forum => forum.Name == name);
+        var forum = _context.Forums.FirstOrDefault(forum => forum.Id == forumId);
         if (forum == null)
         {
             return NotFound();

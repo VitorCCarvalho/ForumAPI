@@ -44,10 +44,10 @@ public class FThreadController : ControllerBase
         }
     }
 
-    [HttpPut("{name}")]
-    public IActionResult PutFThread(string name, [FromBody] UpdateFThreadDto dto)
+    [HttpPut("{fthreadId}")]
+    public IActionResult PutFThread(int fthreadId, [FromBody] UpdateFThreadDto dto)
     {
-        var fthread = _context.Forums.FirstOrDefault(fthread => fthread.Name == name);
+        var fthread = _context.Forums.FirstOrDefault(fthread => fthread.Id == fthreadId);
         if (fthread == null)
         {
             return NotFound();
@@ -57,10 +57,10 @@ public class FThreadController : ControllerBase
         return NoContent();
     }
 
-    [HttpPatch("{name}")]
-    public IActionResult PatchFThread(string name, JsonPatchDocument<UpdateFThreadDto> patch)
+    [HttpPatch("{fthreadId}")]
+    public IActionResult PatchFThread(int fthreadId, JsonPatchDocument<UpdateFThreadDto> patch)
     {
-        var fthread = _context.Forums.FirstOrDefault(fthread => fthread.Name == name);
+        var fthread = _context.Forums.FirstOrDefault(fthread => fthread.Id == fthreadId);
         if (fthread == null)
         {
             return NotFound();
@@ -78,10 +78,10 @@ public class FThreadController : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete("{name}")]
-    public IActionResult DeleteFThread(string name)
+    [HttpDelete("{fthreadId}")]
+    public IActionResult DeleteFThread(int fthreadId)
     {
-        var fthread = _context.Threads.FirstOrDefault(fthread => fthread.Name == name);
+        var fthread = _context.Threads.FirstOrDefault(fthread => fthread.Id == fthreadId);
         if (fthread == null)
         {
             return NotFound();
