@@ -9,8 +9,10 @@ public class ForumProfile : Profile
     public ForumProfile()
     {
         CreateMap<CreateForumDto, Forum>();
-        CreateMap<Forum, ReadForumDto>();
         CreateMap<Forum, UpdateForumDto>();
         CreateMap<UpdateForumDto, Forum>();
+        CreateMap<Forum, ReadForumDto>()
+            .ForMember(forumdto => forumdto.Threads,
+                opt => opt.MapFrom(forum => forum.Threads));
     }
 }

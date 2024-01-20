@@ -1,13 +1,13 @@
 import { Post } from '../post/post'
 export interface FThread {
-  Id: number
-  ForumID: number
-  Name: string
-  Text: string
-  Sticky: boolean
-  Active: boolean
-  DateCreated: Date
-  StartedByUserId: number
-  Locked: boolean
-  Posts: Post[]
+  id: number
+  forumID: number
+  name: string
+  text: string
+  sticky: boolean
+  active: boolean
+  dateCreated: Date
+  startedByUserId: number
+  locked: boolean
+  posts: Post[]
 }

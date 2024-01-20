@@ -1,8 +1,8 @@
 export interface Post {
-  Id: number
-  ThreadId: number
-  Text: string
-  UserId: string
-  DateCreated: Date
-  Locked: boolean
+  id: number
+  threadId: number
+  text: string
+  userId: string
+  dateCreated: Date
+  locked: boolean
 }

@@ -23,8 +23,6 @@ export class ForumComponent implements OnInit{
   ngOnInit(): void {
     this.service.buscarPorId(this.id).subscribe((forum) => { 
       this.forum = forum;
-      alert(this.forum);
-      alert(forum);
     });
   }
 

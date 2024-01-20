@@ -9,6 +9,8 @@ public class FThread
     public int Id { get; set; }
     [Required]
     public int ForumID { get; set; }
+
+    public virtual Forum Forum { get; set; }
     [Required(ErrorMessage = "Name is required.")]
     [Range(3, 50, ErrorMessage = "Name need to have between 3 and 50 characters.")]
     public string Name { get; set; }
