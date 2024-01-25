@@ -44,10 +44,16 @@ public class FThreadController : ControllerBase
         }
     }
 
+    [HttpGet("{fthreadId}")]
+    public ReadFThreadDto GetForumsById(int fthreadId, [FromQuery] int take = 50)
+    {
+        return _mapper.Map<ReadFThreadDto>(_context.Threads.FirstOrDefault(fthread => fthread.Id == fthreadId));
+    }
+
     [HttpPut("{fthreadId}")]
     public IActionResult PutFThread(int fthreadId, [FromBody] UpdateFThreadDto dto)
     {
-        var fthread = _context.Forums.FirstOrDefault(fthread => fthread.Id == fthreadId);
+        var fthread = _context.Threads.FirstOrDefault(fthread => fthread.Id == fthreadId);
         if (fthread == null)
         {
             return NotFound();
@@ -60,7 +66,7 @@ public class FThreadController : ControllerBase
     [HttpPatch("{fthreadId}")]
     public IActionResult PatchFThread(int fthreadId, JsonPatchDocument<UpdateFThreadDto> patch)
     {
-        var fthread = _context.Forums.FirstOrDefault(fthread => fthread.Id == fthreadId);
+        var fthread = _context.Threads.FirstOrDefault(fthread => fthread.Id == fthreadId);
         if (fthread == null)
         {
             return NotFound();

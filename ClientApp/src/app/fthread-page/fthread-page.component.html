@@ -1,0 +1,7 @@
+<div class="container">
+    <h3 class="border-bottom border-secondary mb-4 text-light">Threads</h3>
+    <div *ngFor="let post of listaPosts">
+        <app-post [id]="post.id"></app-post>
+        <div class="border-bottom border-secondary"></div>
+    </div>
+</div>

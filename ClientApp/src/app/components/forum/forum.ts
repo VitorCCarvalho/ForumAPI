@@ -1,6 +1,6 @@
 import { FThread } from '../fthread/fthread'
 export interface Forum {
-  id: Number
+  id: number
   name: string
   description: string
   threads: FThread[]

@@ -1,0 +1,14 @@
+.forum-box{
+    background-color: #28242c;
+    max-height: 6rem;
+}
+
+.forum-box :hover{
+    background-color: var(--bs-light-text-emphasis);
+    transition: background-color 0.5s ease;
+}
+
+p{
+    word-break: break-all;
+    white-space: normal;
+}

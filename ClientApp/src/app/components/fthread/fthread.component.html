@@ -1,1 +1,7 @@
-<p>fthread works!</p>
+<div class="container forum-box m-2 mh-1 overflow-hidden">
+    <a class="link-forum text-decoration-none" [routerLink]="['/fthread-page']" [queryParams]="{fthreadId: fthread.id}">
+        <h5 class="text-light text-wrap word-break">{{fthread.name}}</h5>
+        <p class="forum-desc text-light lh-sm word-break">{{fthread.text}}</p>
+    </a>
+</div>
+

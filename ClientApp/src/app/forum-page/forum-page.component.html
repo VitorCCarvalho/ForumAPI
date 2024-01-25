@@ -1,0 +1,7 @@
+<div class="container">
+    <h3 class="border-bottom border-secondary mb-4 text-light">Threads</h3>
+    <div *ngFor="let fthread of listaFThreads">
+        <app-fthread [id]="fthread.id"></app-fthread>
+        <div class="border-bottom border-secondary"></div>
+    </div>
+</div>

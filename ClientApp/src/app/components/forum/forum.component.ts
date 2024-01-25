@@ -11,8 +11,6 @@ export class ForumComponent implements OnInit{
 
   constructor(private service: ForumService) {}
 
-  forums: Forum[] = []
-
   forum: Forum = {
     id: 0,
     name: '',
