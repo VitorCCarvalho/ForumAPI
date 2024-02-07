@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Hosting;
 using System.ComponentModel.DataAnnotations;
-using System.Threading;
 
 namespace ForumApp.Models;
 
@@ -16,7 +14,5 @@ public class User: IdentityUser
     public DateTime DateJoined { get; set; } = DateTime.Now;
     public virtual ICollection<FThread> Threads { get; set; }
     public virtual ICollection<Post> Posts { get; set; }
-
-
 
 }

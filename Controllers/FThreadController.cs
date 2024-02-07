@@ -45,7 +45,7 @@ public class FThreadController : ControllerBase
     }
 
     [HttpGet("{fthreadId}")]
-    public ReadFThreadDto GetForumsById(int fthreadId, [FromQuery] int take = 50)
+    public ReadFThreadDto GetFThreadById(int fthreadId)
     {
         return _mapper.Map<ReadFThreadDto>(_context.Threads.FirstOrDefault(fthread => fthread.Id == fthreadId));
     }

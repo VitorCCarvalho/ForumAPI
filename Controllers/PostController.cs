@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ForumApp.Data;
 using ForumApp.Data.Dtos.Forum;
+using ForumApp.Data.Dtos.FThread;
 using ForumApp.Data.Dtos.Post;
 using ForumApp.Models;
 using Microsoft.AspNetCore.JsonPatch;
@@ -31,23 +32,29 @@ public class PostController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<ReadPostDto> GetPosts([FromQuery] int? ThreadId, [FromQuery] int take = 50)
+    public IEnumerable<ReadPostDto> GetPosts([FromQuery] int? fthreadId, [FromQuery] int take = 50)
     {
-        if(ThreadId == null)
+        if(fthreadId == null)
         {
             return _mapper.Map<List<ReadPostDto>>(_context.Posts.Take(take).ToList());
         }
         else
         {
             return _mapper.Map<List<ReadPostDto>>(_context.Posts.Take(take).
-                                                    Where(post => post.ThreadId == ThreadId));
+                                                    Where(post => post.ThreadId == fthreadId));
         }
     }
 
-    [HttpPut("{postId}")]
-    public IActionResult PutForum(int postId, [FromBody] UpdatePostDto dto)
+    [HttpGet("{postId}")]
+    public ReadPostDto GetPostById(int postId)
     {
-        var post = _context.Forums.FirstOrDefault(post => post.Id == postId);
+        return _mapper.Map<ReadPostDto>(_context.Posts.FirstOrDefault(post => post.Id == postId));
+    }
+
+    [HttpPut("{postId}")]
+    public IActionResult PutPost(int postId, [FromBody] UpdatePostDto dto)
+    {
+        var post = _context.Posts.FirstOrDefault(post => post.Id == postId);
         if (post == null)
         {
             return NotFound();

@@ -49,4 +49,18 @@ public class UserService
 
         return token;
     }
+
+    public async Task<ReadUserDto> GetUser(string userId)
+    {
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user != null)
+        {
+            var userMap = _mapper.Map<ReadUserDto>(user);
+            return userMap;
+        }
+        else
+        {
+            throw new ApplicationException("Usuário não encontrado");
+        }
+    }
 }

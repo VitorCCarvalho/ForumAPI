@@ -19,6 +19,33 @@ namespace ForumApp.Migrations
                 .HasAnnotation("ProductVersion", "7.0.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("ForumApp.Models.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("Comments");
+                });
+
             modelBuilder.Entity("ForumApp.Models.FThread", b =>
                 {
                     b.Property<int>("Id")
@@ -41,8 +68,9 @@ namespace ForumApp.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("StartedByUserId")
-                        .HasColumnType("int");
+                    b.Property<string>("StartedByUserId")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<bool?>("Sticky")
                         .HasColumnType("tinyint(1)");
@@ -60,7 +88,7 @@ namespace ForumApp.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Threads", (string)null);
+                    b.ToTable("Threads");
                 });
 
             modelBuilder.Entity("ForumApp.Models.Forum", b =>
@@ -79,7 +107,7 @@ namespace ForumApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Forums", (string)null);
+                    b.ToTable("Forums");
                 });
 
             modelBuilder.Entity("ForumApp.Models.Post", b =>
@@ -111,7 +139,7 @@ namespace ForumApp.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Posts", (string)null);
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("ForumApp.Models.User", b =>
@@ -317,6 +345,17 @@ namespace ForumApp.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("ForumApp.Models.Comment", b =>
+                {
+                    b.HasOne("ForumApp.Models.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Post");
                 });
 
             modelBuilder.Entity("ForumApp.Models.FThread", b =>

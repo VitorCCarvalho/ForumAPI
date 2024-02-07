@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FThread } from '../components/fthread/fthread';
 import { Post } from '../components/post/post';
 import { FThreadService } from '../components/fthread/fthread.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from '../components/user/user.service';
+import { User } from '../components/user/user';
 
 @Component({
   selector: 'app-fthread-page',
@@ -13,10 +15,35 @@ import { ActivatedRoute } from '@angular/router';
 export class FthreadPageComponent implements OnInit{
 
   listaPosts : Post[] = [];
-  fthread!: FThread;
+  fthread: FThread ={
+    id: 0,
+    forumID: 0,
+    name: "testeFThread2",
+    text: "testeTextFThread",
+    sticky: false,
+    active: true,
+    dateCreated:  new Date("2024-01-25T11:23:31.3875008-03:00"),
+    startedByUserId: "9239a0ee-71d6-4984-8a71-075d68bf31a7",
+    locked: false,
+    posts: []
+  };
 
-  constructor(private postService: PostService, private fthreadService: FThreadService, private route: ActivatedRoute){}
+  user: User = {
+    id: "teste",
+    name: "teste",
+    username: "teste",
+    description: "testeD",
+    email: "teste",
+    lastLogin: new Date("2024-01-25T11:23:31.3875008-03:00"),
+    dateJoined: new Date("2024-01-25T11:23:31.3875008-03:00")
+  }
 
+  constructor(private postService: PostService, 
+              private fthreadService: FThreadService, 
+              private userService: UserService, 
+              private route: ActivatedRoute,
+              private router: Router){}
+  
   ngOnInit(): void {
     var fthreadId = this.route.snapshot.queryParamMap.get('fthreadId');
     if(fthreadId){
@@ -26,7 +53,36 @@ export class FthreadPageComponent implements OnInit{
       })
       this.fthreadService.buscarPorId(numberFThreadId).subscribe((fthread) => {
         this.fthread = fthread
+
       })
+      if(this.fthread.startedByUserId){
+        this.userService.buscarPorId(this.fthread.startedByUserId).subscribe((user) =>{
+          this.user = user
+        })
+      }
+      
+      
+      
+    }
+  }
+
+  sendReply(){
+    var reply = (<HTMLInputElement>document.getElementById("text-reply")).value
+
+
+    if(reply != "" && this.fthread.id){
+      var newPost: Post = {
+        "threadId": this.fthread.id,
+        "text": reply,
+        "userId": "90654662-ac60-474d-9265-f1119cb43638",
+        "dateCreated": new Date(),
+        "locked": false
+      }
+
+      this.postService.criar(newPost).subscribe(() => {
+        this.router.navigate(['fthread-page'], { queryParams: {fthreadId: this.fthread.id}})
+      })
+
     }
   }
 }

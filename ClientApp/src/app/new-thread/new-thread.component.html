@@ -1,0 +1,11 @@
+<form [formGroup]="newThreadForm" (ngSubmit)="onSubmit()">
+    <div class="col-12">
+        <label for="input-title"><p class="text-light">Título</p></label>
+        <input type="text" class="form-control" id="input-title" formControlName="title"/>
+    </div>
+    <div class="col-12">
+        <label for="input-text"><p class="text-light">Nome de Exibição</p></label>
+        <textarea class="form-control" id="input-text" formControlName="text"></textarea>
+    </div>
+    <button type="submit">Enviar</button>
+</form>

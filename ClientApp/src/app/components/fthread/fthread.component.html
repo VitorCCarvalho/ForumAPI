@@ -1,7 +1,6 @@
-<div class="container forum-box m-2 mh-1 overflow-hidden">
+<mat-list-item lines="4">
     <a class="link-forum text-decoration-none" [routerLink]="['/fthread-page']" [queryParams]="{fthreadId: fthread.id}">
-        <h5 class="text-light text-wrap word-break">{{fthread.name}}</h5>
-        <p class="forum-desc text-light lh-sm word-break">{{fthread.text}}</p>
+        <div matListItemTitle class="text-light text-wrap word-break">{{fthread.name}}</div>
+        <div matListItemLine class="forum-desc text-light lh-sm word-break">{{fthread.text}}</div>
     </a>
-</div>
-
+</mat-list-item>

@@ -1,5 +1,5 @@
 export interface Post {
-  id: number
+  id?: number
   threadId: number
   text: string
   userId: string

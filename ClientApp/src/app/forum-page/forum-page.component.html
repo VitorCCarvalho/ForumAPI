@@ -1,7 +1,17 @@
 <div class="container">
-    <h3 class="border-bottom border-secondary mb-4 text-light">Threads</h3>
-    <div *ngFor="let fthread of listaFThreads">
-        <app-fthread [id]="fthread.id"></app-fthread>
-        <div class="border-bottom border-secondary"></div>
-    </div>
+    <mat-list>
+        <div mat-subheader>
+            <div class="d-flex flex-row justify-content-between mb-4">
+                <h3 class="text-light">Threads</h3>
+                <a [routerLink]="['/newThread-page']" [queryParams]="{forumId: forum.id}">
+                    <p class="text-light">Criar Thread</p>
+                </a>
+            </div>
+        </div>
+
+        <div *ngFor="let fthread of listaFThreads">
+            <app-fthread [id]="fthread.id? fthread.id : -1"></app-fthread>
+            <mat-divider></mat-divider>
+        </div>
+    </mat-list>
 </div>

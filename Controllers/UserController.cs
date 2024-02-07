@@ -1,6 +1,9 @@
-﻿using ForumApp.Data.Dtos.User;
+﻿using AutoMapper;
+using ForumApp.Data.Dtos.Post;
+using ForumApp.Data.Dtos.User;
 using ForumApp.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ForumApp.Controllers;
 
@@ -27,5 +30,12 @@ public class UserController : ControllerBase
     {
         var token = await _userService.Login(dto);
         return Ok(token);
+    }
+
+    [HttpGet("{userId}")]
+    public async Task<IActionResult> GetUser(string userId)
+    {
+        var user = await _userService.GetUser(userId);
+        return Ok(user);
     }
 }

@@ -1,8 +1,6 @@
-<div class="container forum-box m-2 mh-1 overflow-hidden">
+<mat-list-item lines="4">
     <a class="link-forum text-decoration-none" [routerLink]="['/forum-page']" [queryParams]="{forumId: forum.id}">
-        <h5 class="text-light text-wrap word-break">{{forum.name}}</h5>
-        <p class="forum-desc text-light lh-sm word-break">{{forum.description}}</p>
+        <div matListItemTitle class="text-light text-wrap">{{forum.name}}</div>
+        <div matListItemLine class="forum-desc text-light">{{forum.description}}</div>
     </a>
-</div>
-
-
+</mat-list-item>

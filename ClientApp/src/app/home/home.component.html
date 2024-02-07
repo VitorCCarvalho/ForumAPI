@@ -1,8 +1,7 @@
-<div class="container">
-    <h3 class="border-bottom border-secondary mb-4 text-light">Forums</h3>
+<mat-list>
+    <div mat-subheader class="text-light mb-4">Forums</div>
     <div *ngFor="let forum of listaForums">
         <app-forum [id]="forum.id"></app-forum>
-        <div class="border-bottom border-secondary"></div>
+        <mat-divider></mat-divider>
     </div>
-</div>
-
+</mat-list>

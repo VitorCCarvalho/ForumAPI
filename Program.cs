@@ -29,7 +29,9 @@ builder.Services.AddCors(options =>
                       builder =>
                       {
                           builder.WithOrigins("https://localhost:7082",
-                                              "https://localhost:44476");
+                                              "https://localhost:44476")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod(); ;
                       });
 });
 
@@ -49,7 +51,7 @@ builder.Services.AddAuthentication(options =>
     options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
     {
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["SymmetricSecurityKey"])),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("98ahyd9asn8dhFN0SDFNASDLKFNDSF0SD8uyr9esj8fdso0i")),
         ValidateAudience = false,
         ValidateIssuer = false,
         ClockSkew = TimeSpan.Zero

@@ -1,6 +1,8 @@
+import { UserService } from './../user/user.service';
 import { PostService } from './post.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Post } from './post';
+import { User } from '../user/user';
 
 @Component({
   selector: 'app-post',
@@ -9,21 +11,28 @@ import { Post } from './post';
 })
 export class PostComponent implements OnInit{
 
-  constructor(private service: PostService){}
+  constructor(private postService: PostService, private userService: UserService){}
 
   @Input() id : number = 0
+  
   post : Post = {
-    "id": 1,
-    "threadId": 9,
-    "text": "TestePost",
-    "userId": "49f81fb8-93b3-4cd6-aca8-0a277021af2e",
+    "id": 2,
+    "threadId": 10,
+    "text": "TestePost2",
+    "userId": "90654662-ac60-474d-9265-f1119cb43638",
     "dateCreated": new Date("2024-01-25T11:23:31.3875008-03:00"),
     "locked": false
   }
 
+  user!: User 
+
   ngOnInit(): void {
-    this.service.buscarPorId(this.id).subscribe((post) => {
+    this.postService.buscarPorId(this.id).subscribe((post) => {
       this.post = post
+    })
+
+    this.userService.buscarPorId(this.post.userId).subscribe((user) => {
+      this.user = user
     })
   }
 }

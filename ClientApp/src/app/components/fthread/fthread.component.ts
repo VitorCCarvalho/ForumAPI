@@ -20,7 +20,7 @@ export class FthreadComponent implements OnInit{
     "sticky": false,
     "active": true,
     "dateCreated": new Date("2024-01-17T11:56:22.365236"),
-    "startedByUserId": 0,
+    "startedByUserId": "userId",
     "locked": false,
     "posts": []
   }

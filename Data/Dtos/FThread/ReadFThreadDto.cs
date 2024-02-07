@@ -17,7 +17,7 @@ public class ReadFThreadDto
     public bool? Sticky { get; set; }
     public bool? Active { get; set; } 
     public DateTime DateCreated { get; set; } = DateTime.Now;
-    public int StartedByUserId { get; set; }
+    public string StartedByUserId { get; set; }
     public bool? Locked { get; set; } = false;
     public ICollection<ReadPostDto> Posts { get; set; }
 
