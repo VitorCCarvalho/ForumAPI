@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ForumApp</name>
+    </assembly>
+    <members>
+        <member name="M:ForumApp.Controllers.ForumController.PostForum(ForumApp.Data.Dtos.Forum.CreateForumDto)">
+            <summary>
+            Cria um fórum novo.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.ForumController.GetForums(System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Retorna todos os fóruns.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.ForumController.GetForumsById(System.Int32,System.Int32)">
+            <summary>
+            Retorna o fórum que possui forumId como ID.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.ForumController.PutForum(System.Int32,ForumApp.Data.Dtos.Forum.UpdateForumDto)">
+            <summary>
+            Atualiza o fórum que possui forumId como ID.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.ForumController.PatchForum(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{ForumApp.Data.Dtos.Forum.UpdateForumDto})">
+            <summary>
+            Atualiza uma parte do fórum que possui forumId como ID.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.ForumController.DeleteForum(System.Int32)">
+            <summary>
+            Deleta o fórum que possui forumId como ID.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.FThreadController.PostFThread(ForumApp.Data.Dtos.FThread.CreateFThreadDto)">
+            <summary>
+            Cria uma thread nova.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.FThreadController.GetFThreads(System.Nullable{System.Int32},System.Int32)">
+            <summary>
+            Retorna todas as threads.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.FThreadController.GetFThreadById(System.Int32)">
+            <summary>
+            Retorna a thread que possui fthreadId como ID.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.FThreadController.PutFThread(System.Int32,ForumApp.Data.Dtos.FThread.UpdateFThreadDto)">
+            <summary>
+            Atualiza a thread que possui fthreadId como ID.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.FThreadController.PatchFThread(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{ForumApp.Data.Dtos.FThread.UpdateFThreadDto})">
+            <summary>
+            Atualiza uma parte da thread que possui fthreadId como ID.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.FThreadController.DeleteFThread(System.Int32)">
+            <summary>
+            Deleta a thread que possui fthreadId como ID.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.PostController.PostFPost(ForumApp.Data.Dtos.Post.CreatePostDto)">
+            <summary>
+            Cria um post novo.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.PostController.GetPosts(System.Nullable{System.Int32},System.Int32)">
+            <summary>
+            Retorna todos os posts.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.PostController.GetPostById(System.Int32)">
+            <summary>
+            Retorna o post que possui postId como ID.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.PostController.PutPost(System.Int32,ForumApp.Data.Dtos.Post.UpdatePostDto)">
+            <summary>
+            Atualiza o post que possui postId como ID.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.PostController.PatchForum(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{ForumApp.Data.Dtos.Forum.UpdateForumDto})">
+            <summary>
+            Atualiza uma parte do post que possui postId como ID.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.PostController.DeletePost(System.Int32)">
+            <summary>
+            Deleta o post que possui postId como ID.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.UserController.SignUpUser(ForumApp.Data.Dtos.User.CreateUserDto)">
+            <summary>
+            Cadastra um User novo.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.UserController.LoginUser(ForumApp.Data.Dtos.User.LoginUserDto)">
+            <summary>
+            Verifica se o user existe e retorna token de sessão jwt.
+            </summary>
+        </member>
+        <member name="M:ForumApp.Controllers.UserController.GetUser(System.String)">
+            <summary>
+            Retorna todos Users.
+            </summary>
+        </member>
+        <member name="T:ForumApp.Migrations.AddIdentityUser">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.AddIdentityUser.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.AddIdentityUser.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.AddIdentityUser.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ForumApp.Migrations.AddForumThreadPost">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.AddForumThreadPost.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.AddForumThreadPost.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.AddForumThreadPost.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ForumApp.Migrations.PostUserID_KEY">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.PostUserID_KEY.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.PostUserID_KEY.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.PostUserID_KEY.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ForumApp.Migrations.Post_DateCreated_DateTime">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.Post_DateCreated_DateTime.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.Post_DateCreated_DateTime.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.Post_DateCreated_DateTime.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ForumApp.Migrations.Add_OnModelCreating">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.Add_OnModelCreating.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.Add_OnModelCreating.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.Add_OnModelCreating.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ForumApp.Migrations.FThread_UserId_String">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.FThread_UserId_String.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.FThread_UserId_String.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.FThread_UserId_String.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

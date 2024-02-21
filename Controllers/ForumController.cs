@@ -20,6 +20,9 @@ public class ForumController : ControllerBase
         _mapper = mapper;
     }
 
+    /// <summary>
+    /// Cria um fórum novo.
+    /// </summary>
     [HttpPost]
     public IActionResult PostForum([FromBody] CreateForumDto dto)
     {
@@ -29,6 +32,9 @@ public class ForumController : ControllerBase
         return Created("Forum created", forum);
     }
 
+    /// <summary>
+    /// Retorna todos os fóruns.
+    /// </summary>
     [HttpGet]
     public IEnumerable<ReadForumDto> GetForums([FromQuery] int take = 50,[FromQuery] int? forumId = null)
     {
@@ -43,12 +49,18 @@ public class ForumController : ControllerBase
         }
     }
 
+    /// <summary>
+    /// Retorna o fórum que possui forumId como ID.
+    /// </summary>
     [HttpGet("{forumId}")]
     public ReadForumDto GetForumsById(int forumId, [FromQuery] int take = 50)
     {
         return _mapper.Map<ReadForumDto>(_context.Forums.FirstOrDefault(forum => forum.Id == forumId));
     }
 
+    /// <summary>
+    /// Atualiza o fórum que possui forumId como ID.
+    /// </summary>
     [HttpPut("{forumId}")]
     public IActionResult PutForum(int forumId, [FromBody] UpdateForumDto dto)
     {
@@ -62,6 +74,10 @@ public class ForumController : ControllerBase
         return NoContent();
     }
 
+
+    /// <summary>
+    /// Atualiza uma parte do fórum que possui forumId como ID.
+    /// </summary>
     [HttpPatch("{forumId}")]
     public IActionResult PatchForum(int forumId, JsonPatchDocument<UpdateForumDto> patch)
     {
@@ -83,6 +99,9 @@ public class ForumController : ControllerBase
         return NoContent();
     }
 
+    /// <summary>
+    /// Deleta o fórum que possui forumId como ID.
+    /// </summary>
     [HttpDelete("{forumId}")]
     public IActionResult DeleteForum(int forumId)
     {

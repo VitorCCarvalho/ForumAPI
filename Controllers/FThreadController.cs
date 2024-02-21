@@ -21,6 +21,9 @@ public class FThreadController : ControllerBase
         _mapper = mapper;
     }
 
+    /// <summary>
+    /// Cria uma thread nova.
+    /// </summary>
     [HttpPost]
     public IActionResult PostFThread([FromBody] CreateFThreadDto dto)
     {
@@ -30,6 +33,9 @@ public class FThreadController : ControllerBase
         return Created("Thread created", fthread);
     }
 
+    /// <summary>
+    /// Retorna todas as threads.
+    /// </summary>
     [HttpGet]
     public IEnumerable<ReadFThreadDto> GetFThreads([FromQuery] int? forumId, [FromQuery] int take = 50)
     {
@@ -44,12 +50,18 @@ public class FThreadController : ControllerBase
         }
     }
 
+    /// <summary>
+    /// Retorna a thread que possui fthreadId como ID.
+    /// </summary>
     [HttpGet("{fthreadId}")]
     public ReadFThreadDto GetFThreadById(int fthreadId)
     {
         return _mapper.Map<ReadFThreadDto>(_context.Threads.FirstOrDefault(fthread => fthread.Id == fthreadId));
     }
 
+    /// <summary>
+    /// Atualiza a thread que possui fthreadId como ID.
+    /// </summary>
     [HttpPut("{fthreadId}")]
     public IActionResult PutFThread(int fthreadId, [FromBody] UpdateFThreadDto dto)
     {
@@ -63,6 +75,9 @@ public class FThreadController : ControllerBase
         return NoContent();
     }
 
+    /// <summary>
+    /// Atualiza uma parte da thread que possui fthreadId como ID.
+    /// </summary>
     [HttpPatch("{fthreadId}")]
     public IActionResult PatchFThread(int fthreadId, JsonPatchDocument<UpdateFThreadDto> patch)
     {
@@ -84,6 +99,9 @@ public class FThreadController : ControllerBase
         return NoContent();
     }
 
+    /// <summary>
+    /// Deleta a thread que possui fthreadId como ID.
+    /// </summary>
     [HttpDelete("{fthreadId}")]
     public IActionResult DeleteFThread(int fthreadId)
     {

@@ -22,6 +22,9 @@ public class PostController : ControllerBase
         _mapper = mapper;
     }
 
+    /// <summary>
+    /// Cria um post novo.
+    /// </summary>
     [HttpPost]
     public IActionResult PostFPost([FromBody] CreatePostDto dto)
     {
@@ -31,6 +34,9 @@ public class PostController : ControllerBase
         return Created("Post created", post);
     }
 
+    /// <summary>
+    /// Retorna todos os posts.
+    /// </summary>
     [HttpGet]
     public IEnumerable<ReadPostDto> GetPosts([FromQuery] int? fthreadId, [FromQuery] int take = 50)
     {
@@ -45,12 +51,18 @@ public class PostController : ControllerBase
         }
     }
 
+    /// <summary>
+    /// Retorna o post que possui postId como ID.
+    /// </summary>
     [HttpGet("{postId}")]
     public ReadPostDto GetPostById(int postId)
     {
         return _mapper.Map<ReadPostDto>(_context.Posts.FirstOrDefault(post => post.Id == postId));
     }
 
+    /// <summary>
+    /// Atualiza o post que possui postId como ID.
+    /// </summary>
     [HttpPut("{postId}")]
     public IActionResult PutPost(int postId, [FromBody] UpdatePostDto dto)
     {
@@ -64,6 +76,9 @@ public class PostController : ControllerBase
         return NoContent();
     }
 
+    /// <summary>
+    /// Atualiza uma parte do post que possui postId como ID.
+    /// </summary>
     [HttpPatch("{postId}")]
     public IActionResult PatchForum(int postId, JsonPatchDocument<UpdateForumDto> patch)
     {
@@ -86,6 +101,9 @@ public class PostController : ControllerBase
         return NoContent();
     }
 
+    /// <summary>
+    /// Deleta o post que possui postId como ID.
+    /// </summary>
     [HttpDelete("{id}")]
     public IActionResult DeletePost(int postId)
     {

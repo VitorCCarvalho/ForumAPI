@@ -18,6 +18,9 @@ public class UserController : ControllerBase
         _userService = userService;
     }
 
+    /// <summary>
+    /// Cadastra um User novo.
+    /// </summary>
     [HttpPost("signup")]
     public async Task<IActionResult> SignUpUser(CreateUserDto dto)
     {
@@ -25,6 +28,9 @@ public class UserController : ControllerBase
         return Ok("User signed up");
     }
 
+    /// <summary>
+    /// Verifica se o user existe e retorna token de sessão jwt.
+    /// </summary>
     [HttpPost("login")]
     public async Task<IActionResult> LoginUser(LoginUserDto dto)
     {
@@ -32,6 +38,9 @@ public class UserController : ControllerBase
         return Ok(token);
     }
 
+    /// <summary>
+    /// Retorna todos Users.
+    /// </summary>
     [HttpGet("{userId}")]
     public async Task<IActionResult> GetUser(string userId)
     {
