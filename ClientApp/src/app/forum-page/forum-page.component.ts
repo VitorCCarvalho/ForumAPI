@@ -21,6 +21,7 @@ export class ForumPageComponent implements OnInit{
   ngOnInit(): void {
     var forumId = this.route.snapshot.queryParamMap.get('forumId');
     if(forumId){
+      console.log(forumId)
       var numberForumId: number = +forumId
       this.fthreadService.listarPorForum(numberForumId).subscribe((listafthreads) => {
         this.listaFThreads = listafthreads

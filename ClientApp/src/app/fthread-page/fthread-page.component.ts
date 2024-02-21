@@ -1,3 +1,5 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { PostService } from './../components/post/post.service';
 import { Component, OnInit } from '@angular/core';
 import { FThread } from '../components/fthread/fthread';
@@ -6,6 +8,8 @@ import { FThreadService } from '../components/fthread/fthread.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../components/user/user.service';
 import { User } from '../components/user/user';
+
+
 
 @Component({
   selector: 'app-fthread-page',
@@ -42,7 +46,8 @@ export class FthreadPageComponent implements OnInit{
               private fthreadService: FThreadService, 
               private userService: UserService, 
               private route: ActivatedRoute,
-              private router: Router){}
+              private router: Router,
+              private _snackBar: MatSnackBar){}
   
   ngOnInit(): void {
     var fthreadId = this.route.snapshot.queryParamMap.get('fthreadId');
@@ -81,8 +86,15 @@ export class FthreadPageComponent implements OnInit{
 
       this.postService.criar(newPost).subscribe(() => {
         this.router.navigate(['fthread-page'], { queryParams: {fthreadId: this.fthread.id}})
+        this.openSnackBar()
       })
 
     }
+  }
+
+  openSnackBar() {
+    this._snackBar.openFromComponent(SnackBarComponent, {
+      duration: 2000,
+    });
   }
 }

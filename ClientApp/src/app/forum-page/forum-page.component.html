@@ -1,9 +1,9 @@
 <div class="container">
-    <mat-list>
+    <mat-nav-list>
         <div mat-subheader>
-            <div class="d-flex flex-row justify-content-between mb-4">
+            <div class="d-flex flex-row justify-content-between border-bottom border-secondary mb-4">
                 <h3 class="text-light">Threads</h3>
-                <a [routerLink]="['/newThread-page']" [queryParams]="{forumId: forum.id}">
+                <a [routerLink]="['/newThread-page']" [queryParams]="{forumId:forum.id ? forum.id : -1}">
                     <p class="text-light">Criar Thread</p>
                 </a>
             </div>
@@ -13,5 +13,5 @@
             <app-fthread [id]="fthread.id? fthread.id : -1"></app-fthread>
             <mat-divider></mat-divider>
         </div>
-    </mat-list>
+    </mat-nav-list>
 </div>

@@ -1,5 +1,5 @@
 <mat-list-item lines="4">
-    <a class="link-forum text-decoration-none" [routerLink]="['/forum-page']" [queryParams]="{forumId: forum.id}">
+    <a class="link-forum text-decoration-none" [routerLink]="['/forum-page']" [routerLinkActive]="['list-is-active']" [queryParams]="{forumId: forum.id}">
         <div matListItemTitle class="text-light text-wrap">{{forum.name}}</div>
         <div matListItemLine class="forum-desc text-light">{{forum.description}}</div>
     </a>
