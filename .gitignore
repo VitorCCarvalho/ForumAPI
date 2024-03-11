@@ -233,3 +233,4 @@ _Pvt_Extensions
 #Angular packagea
 *.pack
 /ClientApp/.angular/cache/
+/ClientApp/node_modules
