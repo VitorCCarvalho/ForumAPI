@@ -43,7 +43,7 @@ namespace ForumApp.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comments", (string)null);
                 });
 
             modelBuilder.Entity("ForumApp.Models.FThread", b =>
@@ -88,7 +88,7 @@ namespace ForumApp.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Threads");
+                    b.ToTable("Threads", (string)null);
                 });
 
             modelBuilder.Entity("ForumApp.Models.Forum", b =>
@@ -107,7 +107,7 @@ namespace ForumApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Forums");
+                    b.ToTable("Forums", (string)null);
                 });
 
             modelBuilder.Entity("ForumApp.Models.Post", b =>
@@ -139,7 +139,7 @@ namespace ForumApp.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Posts");
+                    b.ToTable("Posts", (string)null);
                 });
 
             modelBuilder.Entity("ForumApp.Models.User", b =>

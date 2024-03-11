@@ -13,6 +13,6 @@ public class CreateFThreadDto
     [StringLength(2000, MinimumLength = 3, ErrorMessage = "Text need to have between 3 and 2000 characters.")]
     public string Text { get; set; }
     [Required(ErrorMessage = "StartedByUserId is required.")]
-    public string StartedByUserId { get; set; }
+    public string UserId { get; set; }
 
 }
