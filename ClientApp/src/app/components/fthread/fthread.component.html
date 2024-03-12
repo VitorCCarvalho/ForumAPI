@@ -1,0 +1,4 @@
+<mat-list-item  style="cursor: pointer" [routerLink]="['/fthread-page']" [queryParams]="{fthreadId: fthread.id}">
+        <div matListItemTitle class="text-light text-wrap word-break">{{fthread.name}}</div>
+        <div matListItemLine class="forum-desc text-light lh-sm word-break">{{fthread.text}}</div>
+</mat-list-item>

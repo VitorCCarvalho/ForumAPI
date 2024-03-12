@@ -40,7 +40,7 @@ public class PostController : ControllerBase
     [HttpGet]
     public IEnumerable<ReadPostDto> GetPosts([FromQuery] int? fthreadId, [FromQuery] int take = 50)
     {
-        if(fthreadId == null)
+        if (fthreadId == null)
         {
             return _mapper.Map<List<ReadPostDto>>(_context.Posts.Take(take).ToList());
         }

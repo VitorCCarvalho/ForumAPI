@@ -39,7 +39,7 @@ public class FThreadController : ControllerBase
     [HttpGet]
     public IEnumerable<ReadFThreadDto> GetFThreads([FromQuery] int? forumId, [FromQuery] int take = 50)
     {
-        if(forumId == null)
+        if (forumId == null)
         {
             return _mapper.Map<List<ReadFThreadDto>>(_context.Threads.Take(take).ToList());
         }

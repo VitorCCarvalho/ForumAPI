@@ -1,0 +1,11 @@
+<form [formGroup]="newThreadForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="col-12">
+        <mat-label>Título</mat-label>
+        <input matInput type="text" id="input-title" formControlName="title"/>
+    </mat-form-field>
+    <mat-form-field class="col-12">
+        <mat-label>Texto</mat-label>
+        <textarea matInput class="input-text" id="input-text" formControlName="text"></textarea>
+    </mat-form-field>
+    <button mat-button color="primary" type="submit">Enviar</button>
+</form>

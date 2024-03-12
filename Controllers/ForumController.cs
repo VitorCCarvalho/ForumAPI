@@ -36,9 +36,9 @@ public class ForumController : ControllerBase
     /// Retorna todos os fóruns.
     /// </summary>
     [HttpGet]
-    public IEnumerable<ReadForumDto> GetForums([FromQuery] int take = 50,[FromQuery] int? forumId = null)
+    public IEnumerable<ReadForumDto> GetForums([FromQuery] int take = 50, [FromQuery] int? forumId = null)
     {
-        if(forumId == null)
+        if (forumId == null)
         {
             return _mapper.Map<List<ReadForumDto>>(_context.Forums.Take(take).ToList());
         }
@@ -65,7 +65,7 @@ public class ForumController : ControllerBase
     public IActionResult PutForum(int forumId, [FromBody] UpdateForumDto dto)
     {
         var forum = _context.Forums.FirstOrDefault(forum => forum.Id == forumId);
-        if(forum == null)
+        if (forum == null)
         {
             return NotFound();
         }
@@ -115,5 +115,5 @@ public class ForumController : ControllerBase
         return NoContent();
     }
 
-    
+
 }

@@ -1,0 +1,22 @@
+<div class="container">
+    <h2 class="mb-4 text-light">{{fthread.name}}</h2>
+    <p class="text-light mb-4">Criado por {{user.name}}</p>
+    <h5 class="border-bottom border-secondary mb-3 text-light">{{fthread.text}}</h5>
+    
+    <mat-list>
+        <div *ngFor="let post of listaPosts">
+            <app-post [id]="post.id? post.id : -1"></app-post>
+            <mat-divider></mat-divider>
+        </div>
+    </mat-list>
+
+    <div class="input-reply">
+        <mat-form-field>
+            <mat-label class="text-light">Responder</mat-label>
+            <textarea matInput cols="4000"  id="text-reply"></textarea>
+        </mat-form-field>
+        <div>
+            <button mat-button color="primary" type="button" (click)="sendReply()">Enviar</button>
+        </div>
+    </div>
+</div>
