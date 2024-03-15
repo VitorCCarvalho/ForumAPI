@@ -1,7 +1,11 @@
-<body class="app-body">
-  <app-header></app-header>
-  <div class="container d-flex flex-column min-vh-100">
-    <router-outlet></router-outlet>
+<body class="app-body d-flex flex-row flex-nowrap">
+  <app-sidebar style="min-width: 15%;"></app-sidebar>
+  <div class="d-flex flex-column justify-content-between" style="min-width: 80%;">
+    <div class="container d-flex flex-column">
+      <router-outlet ></router-outlet>
+    </div>
+    <app-footer></app-footer>
   </div>
-  <app-footer></app-footer>
+  
+  
 </body>

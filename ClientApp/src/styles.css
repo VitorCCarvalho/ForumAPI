@@ -18,9 +18,6 @@ code {
   border-color: #1861ac;
 }
 
-.app-body{
-  background-color: #28242c;
-}
 
 :root,
 [data-bs-theme=light] {
@@ -199,5 +196,8 @@ code {
   --bs-form-invalid-border-color: #ea868f;
 }
 
-html, body { height: 100%; }
+html, body { 
+  height: 100%; 
+  background-color: #28242c
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

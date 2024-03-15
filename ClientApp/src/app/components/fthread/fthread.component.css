@@ -1,3 +1,26 @@
 .mat-list-item:hover{
     background-color: red !important;
   }
+
+.box-fthread{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.box-like{
+  display:flex;
+  flex-direction: column;
+}
+
+.icon-like{
+  color: #c0b4bc;
+}
+
+.icon-like:hover{
+  color: red;
+}
+
+.icon-dislike:hover{
+  color:blue;
+}

@@ -25,6 +25,7 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
 import { NewThreadComponent } from './new-thread/new-thread.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     UserComponent,
     SignupPageComponent,
     NewThreadComponent,
+    SidebarComponent,
     
   ],
   imports: [

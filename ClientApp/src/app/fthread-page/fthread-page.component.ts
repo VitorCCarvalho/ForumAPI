@@ -9,6 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../components/user/user.service';
 import { User } from '../components/user/user';
 
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeartBroken } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -17,6 +19,8 @@ import { User } from '../components/user/user';
   styleUrls: ['./fthread-page.component.css']
 })
 export class FthreadPageComponent implements OnInit{
+  faHeart = faHeart
+  faHeartBroken = faHeartBroken
 
   listaPosts : Post[] = [];
   fthread: FThread ={

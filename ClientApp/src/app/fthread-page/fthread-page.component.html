@@ -1,7 +1,16 @@
 <div class="container">
-    <h2 class="mb-4 text-light">{{fthread.name}}</h2>
-    <p class="text-light mb-4">Criado por {{user.name}}</p>
-    <h5 class="border-bottom border-secondary mb-3 text-light">{{fthread.text}}</h5>
+    <div class="box-fthread">
+        <div class="box-text">
+            <h2 class="mb-4 text-light">{{fthread.name}}</h2>
+            <p class="text-light mb-4">Criado por {{user.name}}</p>
+            <h5 class="mb-3 text-light">{{fthread.text}}</h5>
+        </div>
+        <div class="box-like">
+            <fa-icon class="icon-like" [icon]="faHeart" size="2x"></fa-icon> 
+            <fa-icon class="icon-dislike" [icon]="faHeartBroken" size="2x"></fa-icon>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
     
     <mat-list>
         <div *ngFor="let post of listaPosts">

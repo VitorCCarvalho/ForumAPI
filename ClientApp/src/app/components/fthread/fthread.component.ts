@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FThread } from './fthread';
 import { FThreadService } from './fthread.service';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeartBroken } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-fthread',
@@ -8,6 +10,9 @@ import { FThreadService } from './fthread.service';
   styleUrls: ['./fthread.component.css']
 })
 export class FthreadComponent implements OnInit{
+  faHeart = faHeart
+  faHeartBroken = faHeartBroken
+  isHover = false
   
   constructor(private service : FThreadService){}
 

@@ -1,0 +1,32 @@
+.body-sidebar{
+    min-width: 50%;
+    min-height: 100%;
+    background-color: #404E59;
+    display: grid;
+    grid-template-areas: "icon text"
+                         "icon text";
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 1rem;
+}
+
+
+.icon{
+    align-self: center;
+    grid-column: 1;
+    cursor: pointer;
+}
+
+.text{
+    grid-column: 2;
+    cursor: pointer;
+}
+
+.icon:hover{
+    color:#cacaca;
+}
+
+.text:hover{
+    color:#cacaca;
+}

@@ -1,0 +1,30 @@
+.box-fthread{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.box-like{
+    display:flex;
+    flex-direction: column;
+}
+
+.icon-like{
+    color: #c0b4bc;
+}
+
+.icon-dislike{
+    color: #c0b4bc;
+}
+  
+.icon-like:hover{
+    -webkit-animation: beat 1s infinite linear;
+    animation: beat 1s infinite linear; 
+    -moz-animation: beat 1s infinite linear;
+    -o-animation: beat 1s infinite linear;
+    color: red;
+}
+  
+.icon-dislike:hover{
+    color:blue;
+}
