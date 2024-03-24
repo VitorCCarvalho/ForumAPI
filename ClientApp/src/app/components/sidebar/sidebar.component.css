@@ -1,7 +1,19 @@
-.body-sidebar{
+a.logo{
+    background: url("../../../assets/logoCodeSpace.png");
+    width: 500px;
+}
+
+.sidebar{
     min-width: 50%;
     min-height: 100%;
     background-color: #404E59;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.body-sidebar{
     display: grid;
     grid-template-areas: "icon text"
                          "icon text";
@@ -11,9 +23,8 @@
     gap: 1rem;
 }
 
-
 .icon{
-    align-self: center;
+    justify-self: center;
     grid-column: 1;
     cursor: pointer;
 }
@@ -23,10 +34,53 @@
     cursor: pointer;
 }
 
-.icon:hover{
+.icon:hover, .text:hover{
     color:#cacaca;
+    transition: linear 0.3s;
 }
 
-.text:hover{
+
+
+.icon:hover + .text{
     color:#cacaca;
+    transition: linear 0.3s;
+
 }
+
+.icon:has(+ .text:hover){
+    color:#cacaca;
+    transition: linear 0.3s;
+
+}
+
+
+.user{
+    border: solid;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem;
+    min-width: 50%;
+    padding: 0.5rem;
+    
+}
+
+.user:hover{
+    background-color: #2e2c2d;
+    transition: linear 0.3s;
+    cursor: pointer;
+}
+
+.user:hover > .icon-user{
+    color: white;
+    transition: linear 0.3s;
+}
+
+
+.user:hover > .user-text{
+    color: white;
+    transition: linear 0.3s;
+}
+
+

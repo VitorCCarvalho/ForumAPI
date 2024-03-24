@@ -1,12 +1,13 @@
-.mat-list-item:hover{
-    background-color: red !important;
-  }
-
-.box-fthread{
+#mat-list-item{
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
 }
+
+.mat-title{
+  padding: rem;
+}
+
 
 .box-like{
   display:flex;
