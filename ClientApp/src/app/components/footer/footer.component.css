@@ -2,3 +2,11 @@
     min-width: 80%;
     bottom: 1px;
 }
+
+.link-secondary:hover{
+    transition: linear 0.3s;
+}
+
+.author-name{
+    color: #70747c;
+}

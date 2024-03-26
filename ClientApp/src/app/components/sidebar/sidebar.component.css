@@ -1,6 +1,5 @@
-a.logo{
-    background: url("../../../assets/logoCodeSpace.png");
-    width: 500px;
+.logo{
+    background-image: url("../../../assets/logoCodeSpace.png");
 }
 
 .sidebar{
@@ -27,11 +26,15 @@ a.logo{
     justify-self: center;
     grid-column: 1;
     cursor: pointer;
+    transition: linear 0.3s;
+
 }
 
 .text{
     grid-column: 2;
     cursor: pointer;
+    transition: linear 0.3s;
+
 }
 
 .icon:hover, .text:hover{
@@ -63,7 +66,8 @@ a.logo{
     gap: 1rem;
     min-width: 50%;
     padding: 0.5rem;
-    
+    transition: linear 0.3s;
+
 }
 
 .user:hover{

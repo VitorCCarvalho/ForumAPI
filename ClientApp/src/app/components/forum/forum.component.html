@@ -1,5 +1,5 @@
-  <mat-list-item class="box-forum" style="cursor: pointer" [routerLink]="['/forum-page']" [routerLinkActive]="['list-is-active']" [queryParams]="{forumId: forum.id}">
-    <span matListItemTitle class="text-title text-light text-wrap ">{{forum.name}}</span>
-    <span matListItemLine class="forum-desc text-light ">{{forum.description}}</span>
+  <mat-list-item class="list-item" style="cursor: pointer" [routerLink]="['/forum-page']" [routerLinkActive]="['list-is-active']" [queryParams]="{forumId: forum.id}">
+    <span matListItemTitle class="text-title text-wrap ">{{forum.name}}</span>
+    <span matListItemLine class="forum-desc">{{forum.description}}</span>
   </mat-list-item>
 

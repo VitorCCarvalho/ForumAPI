@@ -1,12 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-.mat-list-item:hover{
-  background-color: rgb(179, 53, 53);
-}
-
 /* Provide sufficient contrast against white background */
-a {
-  
-}
+
 
 code {
   color: #e01a76;
@@ -18,10 +12,22 @@ code {
   border-color: #1861ac;
 }
 
-.teste{
-  background-color: rgb(179, 53, 53);
-
+.title{
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 1rem;
 }
+
+.list-item-title{
+  color: white;
+  font-size: 1rem;
+  text-wrap: wrap;
+}
+
+.list-item{
+  margin: 5px;
+}
+
 
 :root,
 [data-bs-theme=light] {

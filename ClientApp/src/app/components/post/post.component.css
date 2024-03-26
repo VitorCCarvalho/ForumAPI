@@ -7,12 +7,20 @@
 .box-like{
     display:flex;
     flex-direction: column;
+    
+}
+
+.icon-like,.icon-dislike{
+    transition: linear 0.3s;
 }
 
 .icon-like:hover{
     color:red;
+    transition: linear 0.3s;
 }
   
 .icon-dislike:hover{
     color:blue;
+    transition: linear 0.3s;
+
 }

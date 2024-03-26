@@ -1,8 +1,5 @@
-<mat-list-item class="mat-item" style="cursor: pointer" [routerLink]="['/fthread-page']" [queryParams]="{fthreadId: fthread.id}">
-        <div class="box-fthread">
-                <div class="box-text">
-                        <div matListItemTitle class="mat-title text-light text-wrap word-break">{{fthread.name}}</div>
-                        <div matListItemLine class="forum-desc text-light lh-sm word-break">{{fthread.text}}</div>
-                </div>
-        </div>
+<mat-list-item class="list-item" style="cursor: pointer" [routerLink]="['/fthread-page']" [queryParams]="{fthreadId: fthread.id}">
+        <span matListItemTitle class="list-item-title">{{fthread.name}}</span>
+        <span matListItemLine class="list-item-desc">{{fthread.text}}</span>
+        <span matListItemLine class="list-item-author">Enviado por: User</span>
 </mat-list-item>

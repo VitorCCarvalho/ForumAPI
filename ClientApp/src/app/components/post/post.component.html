@@ -1,8 +1,8 @@
-<mat-list-item>
+<mat-list-item class="list-item">
     <div class="box-post">
         <div class="box-text">
-            <div matListItemTitle class="text-light text-wrap word-break">{{user.name}}</div>
-        <div matListItemLine class="forum-desc text-light lh-sm word-break mb-2">{{post.text}}</div>
+            <span matListItemTitle class="text-light text-wrap word-break">{{user.name}}</span>
+            <span matListItemLine class="forum-desc text-light lh-sm word-break mb-2">{{post.text}}</span>
         </div>
         <div class="box-like">
             <fa-icon class="icon-like" [icon]="faHeart" size="lg"></fa-icon> 

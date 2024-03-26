@@ -1,31 +1,30 @@
-<div class="container">
-    <div class="box-fthread">
-        <div class="box-text">
-            <h2 class="mb-4 text-light">{{fthread.name}}</h2>
-            <p class="text-light mb-4">Criado por {{user.name}}</p>
-            <h5 class="mb-3 text-light">{{fthread.text}}</h5>
-        </div>
-        <div class="box-like">
-            <fa-icon class="icon-like" [icon]="faHeart" size="2x"></fa-icon> 
-            <fa-icon class="icon-dislike" [icon]="faHeartBroken" size="2x"></fa-icon>
-        </div>
+<div class="box-fthread">
+    <div class="box-text">
+        <div class="title">{{fthread.name}}</div>
+        <p class="mb-3 text-light">{{fthread.text}}</p>
+        <p class="text-light mb-4">Criado por {{user.name}}</p>
     </div>
-    <mat-divider></mat-divider>
-    
-    <mat-list>
-        <div *ngFor="let post of listaPosts">
-            <app-post [id]="post.id? post.id : -1"></app-post>
-            <mat-divider></mat-divider>
-        </div>
-    </mat-list>
+    <div class="box-like">
+        <fa-icon class="icon-like" [icon]="faHeart" size="2x"></fa-icon> 
+        <fa-icon class="icon-dislike" [icon]="faHeartBroken" size="2x"></fa-icon>
+    </div>
+</div>
+<div class="border-bottom"></div>
 
-    <div class="input-reply">
-        <mat-form-field>
-            <mat-label class="text-light">Responder</mat-label>
-            <textarea matInput cols="4000"  id="text-reply"></textarea>
-        </mat-form-field>
-        <div>
-            <button mat-button color="primary" type="button" (click)="sendReply()">Enviar</button>
-        </div>
+
+<mat-list>
+    <div *ngFor="let post of listaPosts">
+        <app-post [id]="post.id? post.id : -1"></app-post>
+        <mat-divider></mat-divider>
+    </div>
+</mat-list>
+
+<div class="input-reply">
+    <mat-form-field>
+        <mat-label class="text-light">Responder</mat-label>
+        <textarea matInput cols="4000"  id="text-reply"></textarea>
+    </mat-form-field>
+    <div>
+        <button mat-button color="primary" type="button" (click)="sendReply()">Enviar</button>
     </div>
 </div>

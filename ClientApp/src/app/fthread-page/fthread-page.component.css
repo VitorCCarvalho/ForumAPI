@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 15px;
 }
   
 .box-like{
@@ -9,22 +10,18 @@
     flex-direction: column;
 }
 
-.icon-like{
+.icon-like,.icon-dislike{
     color: #c0b4bc;
+    transition: linear 0.3s;
 }
 
-.icon-dislike{
-    color: #c0b4bc;
-}
   
 .icon-like:hover{
-    -webkit-animation: beat 1s infinite linear;
-    animation: beat 1s infinite linear; 
-    -moz-animation: beat 1s infinite linear;
-    -o-animation: beat 1s infinite linear;
     color: red;
+    transition: linear 0.3s;
 }
   
 .icon-dislike:hover{
     color:blue;
+    transition: linear 0.3s;
 }
