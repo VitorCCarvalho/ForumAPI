@@ -3,6 +3,7 @@ using System;
 using ForumApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForumApp.Migrations
 {
     [DbContext(typeof(ForumContext))]
-    partial class ForumContextModelSnapshot : ModelSnapshot
+    [Migration("20240403150053_LikedThread_LikedPost")]
+    partial class LikedThread_LikedPost
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,31 +55,18 @@ namespace ForumApp.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
+                    b.Property<string>("UserId1")
+                        .HasColumnType("varchar(255)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ForumID");
 
                     b.HasIndex("UserId");
 
+                    b.HasIndex("UserId1");
+
                     b.ToTable("Threads");
-                });
-
-            modelBuilder.Entity("ForumApp.Models.FThreadReaction", b =>
-                {
-                    b.Property<int>("ThreadId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<bool>("Reaction")
-                        .HasColumnType("tinyint(1)");
-
-                    b.HasKey("ThreadId", "UserId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("FThreadReaction");
                 });
 
             modelBuilder.Entity("ForumApp.Models.Forum", b =>
@@ -121,31 +111,18 @@ namespace ForumApp.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
+                    b.Property<string>("UserId1")
+                        .HasColumnType("varchar(255)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ThreadId");
 
                     b.HasIndex("UserId");
 
+                    b.HasIndex("UserId1");
+
                     b.ToTable("Posts");
-                });
-
-            modelBuilder.Entity("ForumApp.Models.PostReaction", b =>
-                {
-                    b.Property<int>("PostId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<bool>("Reaction")
-                        .HasColumnType("tinyint(1)");
-
-                    b.HasKey("PostId", "UserId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("PostReaction");
                 });
 
             modelBuilder.Entity("ForumApp.Models.User", b =>
@@ -367,26 +344,11 @@ namespace ForumApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ForumApp.Models.User", null)
+                        .WithMany("LikedThreads")
+                        .HasForeignKey("UserId1");
+
                     b.Navigation("Forum");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("ForumApp.Models.FThreadReaction", b =>
-                {
-                    b.HasOne("ForumApp.Models.FThread", "FThread")
-                        .WithMany("Reactions")
-                        .HasForeignKey("ThreadId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ForumApp.Models.User", "User")
-                        .WithMany("ThreadReactions")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("FThread");
 
                     b.Navigation("User");
                 });
@@ -405,26 +367,11 @@ namespace ForumApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ForumApp.Models.User", null)
+                        .WithMany("LikedPosts")
+                        .HasForeignKey("UserId1");
+
                     b.Navigation("Thread");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("ForumApp.Models.PostReaction", b =>
-                {
-                    b.HasOne("ForumApp.Models.Post", "Post")
-                        .WithMany("Reactions")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ForumApp.Models.User", "User")
-                        .WithMany("PostReactions")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Post");
 
                     b.Navigation("User");
                 });
@@ -483,8 +430,6 @@ namespace ForumApp.Migrations
             modelBuilder.Entity("ForumApp.Models.FThread", b =>
                 {
                     b.Navigation("Posts");
-
-                    b.Navigation("Reactions");
                 });
 
             modelBuilder.Entity("ForumApp.Models.Forum", b =>
@@ -492,18 +437,13 @@ namespace ForumApp.Migrations
                     b.Navigation("Threads");
                 });
 
-            modelBuilder.Entity("ForumApp.Models.Post", b =>
-                {
-                    b.Navigation("Reactions");
-                });
-
             modelBuilder.Entity("ForumApp.Models.User", b =>
                 {
-                    b.Navigation("PostReactions");
+                    b.Navigation("LikedPosts");
+
+                    b.Navigation("LikedThreads");
 
                     b.Navigation("Posts");
-
-                    b.Navigation("ThreadReactions");
 
                     b.Navigation("Threads");
                 });

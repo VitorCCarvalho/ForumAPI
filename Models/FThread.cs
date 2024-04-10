@@ -20,8 +20,9 @@ public class FThread
     public bool? Sticky { get; set; } = false;
     public bool? Active { get; set; } = true;
     public DateTime DateCreated { get; set; } = DateTime.Now;
+    public virtual User User { get; set; }
     public string UserId { get; set; }
     public bool? Locked { get; set; } = false;
     public virtual ICollection<Post> Posts { get; set; }
-
+    public virtual ICollection<FThreadReaction> Reactions { get; set; }
 }

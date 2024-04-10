@@ -181,5 +181,41 @@
         <member name="M:ForumApp.Migrations.FThread_UserId_String.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:ForumApp.Migrations.LikedThread_LikedPost">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.LikedThread_LikedPost.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.LikedThread_LikedPost.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.LikedThread_LikedPost.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ForumApp.Migrations.Likes_Dislikes">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.Likes_Dislikes.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.Likes_Dislikes.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.Likes_Dislikes.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ForumApp.Migrations.FThread_Post_Reaction">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.FThread_Post_Reaction.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.FThread_Post_Reaction.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForumApp.Migrations.FThread_Post_Reaction.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

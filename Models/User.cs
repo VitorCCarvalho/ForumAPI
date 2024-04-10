@@ -12,7 +12,11 @@ public class User: IdentityUser
     public string? Description { get; set; }
     public DateTime LastLogin { get; set; }
     public DateTime DateJoined { get; set; } = DateTime.Now;
-    public virtual ICollection<FThread> Threads { get; set; }
+    public ICollection<FThread> Threads { get; set; }
     public virtual ICollection<Post> Posts { get; set; }
+    public virtual ICollection<FThreadReaction> ThreadReactions { get; set; }
+    public virtual ICollection<PostReaction> PostReactions { get; set; }
+
+
 
 }

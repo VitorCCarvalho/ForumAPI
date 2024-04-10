@@ -3,6 +3,7 @@ using System;
 using ForumApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,14 +11,46 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForumApp.Migrations
 {
     [DbContext(typeof(ForumContext))]
-    partial class ForumContextModelSnapshot : ModelSnapshot
+    [Migration("20240403233544_Likes_Dislikes")]
+    partial class Likes_Dislikes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("FThreadUser", b =>
+                {
+                    b.Property<int>("LikedThreadsId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserLikesId")
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("LikedThreadsId", "UserLikesId");
+
+                    b.HasIndex("UserLikesId");
+
+                    b.ToTable("FThreadUser");
+                });
+
+            modelBuilder.Entity("FThreadUser1", b =>
+                {
+                    b.Property<int>("DislikedThreadsId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserDislikesId")
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("DislikedThreadsId", "UserDislikesId");
+
+                    b.HasIndex("UserDislikesId");
+
+                    b.ToTable("FThreadUser1");
+                });
 
             modelBuilder.Entity("ForumApp.Models.FThread", b =>
                 {
@@ -59,24 +92,6 @@ namespace ForumApp.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Threads");
-                });
-
-            modelBuilder.Entity("ForumApp.Models.FThreadReaction", b =>
-                {
-                    b.Property<int>("ThreadId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<bool>("Reaction")
-                        .HasColumnType("tinyint(1)");
-
-                    b.HasKey("ThreadId", "UserId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("FThreadReaction");
                 });
 
             modelBuilder.Entity("ForumApp.Models.Forum", b =>
@@ -128,24 +143,6 @@ namespace ForumApp.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Posts");
-                });
-
-            modelBuilder.Entity("ForumApp.Models.PostReaction", b =>
-                {
-                    b.Property<int>("PostId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<bool>("Reaction")
-                        .HasColumnType("tinyint(1)");
-
-                    b.HasKey("PostId", "UserId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("PostReaction");
                 });
 
             modelBuilder.Entity("ForumApp.Models.User", b =>
@@ -353,6 +350,66 @@ namespace ForumApp.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("PostUser", b =>
+                {
+                    b.Property<int>("LikedPostsId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserLikesId")
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("LikedPostsId", "UserLikesId");
+
+                    b.HasIndex("UserLikesId");
+
+                    b.ToTable("PostUser");
+                });
+
+            modelBuilder.Entity("PostUser1", b =>
+                {
+                    b.Property<int>("DislikedPostsId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserDislikesId")
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("DislikedPostsId", "UserDislikesId");
+
+                    b.HasIndex("UserDislikesId");
+
+                    b.ToTable("PostUser1");
+                });
+
+            modelBuilder.Entity("FThreadUser", b =>
+                {
+                    b.HasOne("ForumApp.Models.FThread", null)
+                        .WithMany()
+                        .HasForeignKey("LikedThreadsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ForumApp.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserLikesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("FThreadUser1", b =>
+                {
+                    b.HasOne("ForumApp.Models.FThread", null)
+                        .WithMany()
+                        .HasForeignKey("DislikedThreadsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ForumApp.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserDislikesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ForumApp.Models.FThread", b =>
                 {
                     b.HasOne("ForumApp.Models.Forum", "Forum")
@@ -372,25 +429,6 @@ namespace ForumApp.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("ForumApp.Models.FThreadReaction", b =>
-                {
-                    b.HasOne("ForumApp.Models.FThread", "FThread")
-                        .WithMany("Reactions")
-                        .HasForeignKey("ThreadId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ForumApp.Models.User", "User")
-                        .WithMany("ThreadReactions")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("FThread");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("ForumApp.Models.Post", b =>
                 {
                     b.HasOne("ForumApp.Models.FThread", "Thread")
@@ -406,25 +444,6 @@ namespace ForumApp.Migrations
                         .IsRequired();
 
                     b.Navigation("Thread");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("ForumApp.Models.PostReaction", b =>
-                {
-                    b.HasOne("ForumApp.Models.Post", "Post")
-                        .WithMany("Reactions")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ForumApp.Models.User", "User")
-                        .WithMany("PostReactions")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Post");
 
                     b.Navigation("User");
                 });
@@ -480,11 +499,39 @@ namespace ForumApp.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("PostUser", b =>
+                {
+                    b.HasOne("ForumApp.Models.Post", null)
+                        .WithMany()
+                        .HasForeignKey("LikedPostsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ForumApp.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserLikesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PostUser1", b =>
+                {
+                    b.HasOne("ForumApp.Models.Post", null)
+                        .WithMany()
+                        .HasForeignKey("DislikedPostsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ForumApp.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserDislikesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ForumApp.Models.FThread", b =>
                 {
                     b.Navigation("Posts");
-
-                    b.Navigation("Reactions");
                 });
 
             modelBuilder.Entity("ForumApp.Models.Forum", b =>
@@ -492,18 +539,9 @@ namespace ForumApp.Migrations
                     b.Navigation("Threads");
                 });
 
-            modelBuilder.Entity("ForumApp.Models.Post", b =>
-                {
-                    b.Navigation("Reactions");
-                });
-
             modelBuilder.Entity("ForumApp.Models.User", b =>
                 {
-                    b.Navigation("PostReactions");
-
                     b.Navigation("Posts");
-
-                    b.Navigation("ThreadReactions");
 
                     b.Navigation("Threads");
                 });
