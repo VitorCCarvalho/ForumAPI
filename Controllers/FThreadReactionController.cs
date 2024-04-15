@@ -43,6 +43,22 @@ public class FThreadReactionController : ControllerBase
         }
     }
 
+    [HttpGet("{fthreadId}/{reaction}")]
+    public IEnumerable<ReadFThreadReactionDto> GetFThreadReactionPorFThread([FromQuery] int fthreadId, [FromQuery] string? reaction)
+    {
+        if(reaction == "like")
+        {
+            return _mapper.Map<List<ReadFThreadReactionDto>>(_context.FThreadReaction.Where(fthreadReaction => fthreadReaction.ThreadId == fthreadId & fthreadReaction.Reaction == true).ToList());
+        } else if(reaction == "dislike")
+        {
+            return _mapper.Map<List<ReadFThreadReactionDto>>(_context.FThreadReaction.Where(fthreadReaction => fthreadReaction.ThreadId == fthreadId & fthreadReaction.Reaction == false).ToList());
+        }else
+        {
+            return _mapper.Map<List<ReadFThreadReactionDto>>(_context.FThreadReaction.Where(fthreadReaction => fthreadReaction.ThreadId == fthreadId).ToList());
+        }
+    }
+
+
     [HttpGet("{fthreadId}/{userId}")]
     public ReadFThreadReactionDto GetFThreadReaction(int fthreadId, string UserId)
     {

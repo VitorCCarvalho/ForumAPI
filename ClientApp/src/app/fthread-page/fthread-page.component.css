@@ -19,9 +19,11 @@
 .icon-like:hover{
     color: red;
     transition: linear 0.3s;
+    cursor: pointer;
 }
   
 .icon-dislike:hover{
     color:blue;
     transition: linear 0.3s;
+    cursor: pointer;
 }

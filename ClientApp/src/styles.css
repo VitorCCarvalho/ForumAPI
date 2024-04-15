@@ -2,10 +2,6 @@
 /* Provide sufficient contrast against white background */
 
 
-code {
-  color: #e01a76;
-}
-
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;

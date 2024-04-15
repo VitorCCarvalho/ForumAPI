@@ -23,7 +23,7 @@ export class PostComponent implements OnInit{
     "id": 2,
     "threadId": 10,
     "text": "TestePost2",
-    "userId": "90654662-ac60-474d-9265-f1119cb43638",
+    "userId": "7de22010-e975-409f-a4b1-5a4e5ac419bc",
     "dateCreated": new Date("2024-01-25T11:23:31.3875008-03:00"),
     "locked": false
   }

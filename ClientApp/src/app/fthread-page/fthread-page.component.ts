@@ -83,7 +83,7 @@ export class FthreadPageComponent implements OnInit{
       var newPost: Post = {
         "threadId": this.fthread.id,
         "text": reply,
-        "userId": "90654662-ac60-474d-9265-f1119cb43638",
+        "userId": "7de22010-e975-409f-a4b1-5a4e5ac419bc",
         "dateCreated": new Date(),
         "locked": false
       }
