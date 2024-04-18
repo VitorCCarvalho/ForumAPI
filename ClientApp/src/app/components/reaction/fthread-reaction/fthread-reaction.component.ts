@@ -15,17 +15,23 @@ export class FthreadReactionComponent implements OnInit{
 
   constructor(private service : FthreadReactionService){}
 
-  @Input() threadId: number = 0
+  @Input() fthreadId: string = ""
   @Input() userId: string = ""
   listaFthreadReactions : FthreadReaction[] = []
+  likes : FthreadReaction[]  = []
+  dislikes : FthreadReaction[] = [] 
 
   likeCount: number = 0
   dislikeCount: number = 0
   ngOnInit(): void {
-    this.service.listarPorFThread(this.threadId).subscribe((listaFthreadReactions) => {
+    var numberFThreadId : number = +this.fthreadId 
+    this.service.listarPorFThread(numberFThreadId).subscribe((listaFthreadReactions) => {
       this.listaFthreadReactions = listaFthreadReactions
-
-      console.log(this.listaFthreadReactions)
+      this.likes = this.listaFthreadReactions.filter(i => i.reaction == true)
+      this.dislikes = this.listaFthreadReactions.filter(i => i.reaction == false)
+      
+      this.likeCount = this.likes.length
+      this.dislikeCount = this.dislikes.length
     })
   }
 }

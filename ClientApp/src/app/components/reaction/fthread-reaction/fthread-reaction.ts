@@ -1,5 +1,5 @@
 export interface FthreadReaction{
-    ThreadId: number
-    UserId: string
-    Reaction: boolean
+    threadId: number
+    userId: string
+    reaction: boolean
 }

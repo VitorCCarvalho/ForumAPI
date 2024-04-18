@@ -29,33 +29,28 @@ public class FThreadReactionController : ControllerBase
         return Created("FThread Reaction Created", fThreadReaction);
     }
 
-    [HttpGet]
-    public IEnumerable<ReadFThreadReactionDto> GetFThreadReactions([FromQuery] int? fThreadId, [FromQuery] int take = 50)
+    //[HttpGet]
+    //public IEnumerable<ReadFThreadReactionDto> GetFThreadReactions([FromQuery] int take = 50)
+    //{
+ 
+    //        return _mapper.Map<List<ReadFThreadReactionDto>>(_context.FThreadReaction.Take(take).ToList());
+    //}
+
+    [HttpGet("{fthreadId}")]
+    public IEnumerable<ReadFThreadReactionDto> GetFThreadReactionPorFThread(int fthreadId, [FromQuery] string? reaction)
     {
-        if (fThreadId == null)
+        if (reaction == "like")
         {
-            return _mapper.Map<List<ReadFThreadReactionDto>>(_context.FThreadReaction.Take(take).ToList());
+            return _mapper.Map<List<ReadFThreadReactionDto>>(_context.FThreadReaction.Where(fthreadReaction => fthreadReaction.ThreadId == fthreadId & fthreadReaction.Reaction == true).ToList());
+        }
+        else if (reaction == "dislike")
+        {
+            return _mapper.Map<List<ReadFThreadReactionDto>>(_context.FThreadReaction.Where(fthreadReaction => fthreadReaction.ThreadId == fthreadId & fthreadReaction.Reaction == false).ToList());
         }
         else
         {
-            return _mapper.Map<List<ReadFThreadReactionDto>>(_context.FThreadReaction.Take(take).
-                                                        Where(fthreadReaction => fthreadReaction.ThreadId == fThreadId).ToList());
-        }
-    }
-
-    [HttpGet("{fthreadId}/{reaction}")]
-    public IEnumerable<ReadFThreadReactionDto> GetFThreadReactionPorFThread([FromQuery] int fthreadId, [FromQuery] string? reaction)
-    {
-        if(reaction == "like")
-        {
-            return _mapper.Map<List<ReadFThreadReactionDto>>(_context.FThreadReaction.Where(fthreadReaction => fthreadReaction.ThreadId == fthreadId & fthreadReaction.Reaction == true).ToList());
-        } else if(reaction == "dislike")
-        {
-            return _mapper.Map<List<ReadFThreadReactionDto>>(_context.FThreadReaction.Where(fthreadReaction => fthreadReaction.ThreadId == fthreadId & fthreadReaction.Reaction == false).ToList());
-        }else
-        {
             return _mapper.Map<List<ReadFThreadReactionDto>>(_context.FThreadReaction.Where(fthreadReaction => fthreadReaction.ThreadId == fthreadId).ToList());
-        }
+        }  
     }
 
 

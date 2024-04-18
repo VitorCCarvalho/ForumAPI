@@ -9,6 +9,8 @@ using ForumApp.Data.Dtos.FThreadReaction;
 
 namespace ForumApp.Controllers;
 
+[ApiController]
+[Route("[controller]")]
 public class PostReactionController : ControllerBase
 {
     private ForumContext _context;
@@ -23,10 +25,10 @@ public class PostReactionController : ControllerBase
     [HttpPost]
     public IActionResult PostFPostReaction([FromBody] CreatePostReactionDto dto)
     {
-        PostReaction fThreadReaction = _mapper.Map<PostReaction>(dto);
-        _context.Add(fThreadReaction);
+        PostReaction postReaction = _mapper.Map<PostReaction>(dto);
+        _context.Add(postReaction);
         _context.SaveChanges();
-        return Created("Post Reaction Created", fThreadReaction);
+        return Created("Post Reaction Created", postReaction);
     }
 
     [HttpGet]
@@ -43,6 +45,23 @@ public class PostReactionController : ControllerBase
         }
     }
 
+    [HttpGet("{postId}")]
+    public IEnumerable<ReadPostReactionDto> GetFThreadReactionPorFThread(int postId, [FromQuery] string? reaction)
+    {
+        if (reaction == "like")
+        {
+            return _mapper.Map<List<ReadPostReactionDto>>(_context.PostReaction.Where(postReaction => postReaction.PostId == postId & postReaction.Reaction == true).ToList());
+        }
+        else if (reaction == "dislike")
+        {
+            return _mapper.Map<List<ReadPostReactionDto>>(_context.PostReaction.Where(postReaction => postReaction.PostId == postId & postReaction.Reaction == false).ToList());
+        }
+        else
+        {
+            return _mapper.Map<List<ReadPostReactionDto>>(_context.PostReaction.Where(postReaction => postReaction.PostId == postId).ToList());
+        }
+    }
+
     [HttpGet("{postId}/{userId}")]
     public ReadPostReactionDto GetPostReaction(int postId, string UserId)
     {
@@ -50,7 +69,7 @@ public class PostReactionController : ControllerBase
     }
 
     [HttpPut("{fthreadId}/{userId}")]
-    public IActionResult PutPostReaction([FromQuery] int postId, [FromQuery] string UserId, [FromBody] UpdateFThreadDto dto)
+    public IActionResult PutPostReaction([FromQuery] int postId, [FromQuery] string UserId, [FromBody] UpdatePostDto dto)
     {
         var fthreadReaction = _context.PostReaction.FirstOrDefault(fthreadReaction => fthreadReaction.PostId == postId & fthreadReaction.UserId == UserId);
         if (fthreadReaction == null)

@@ -67,7 +67,7 @@
     min-width: 50%;
     padding: 0.5rem;
     transition: linear 0.3s;
-
+    background-color: #404E59;
 }
 
 .user:hover{

@@ -16,8 +16,13 @@ export class FthreadReactionService {
     return this.http.get<FthreadReaction[]>(this.API)
   }
 
-  listarPorFThread(fthreadReaction : number): Observable<FthreadReaction[]> {
-    const url = `${this.API}?fthreadId=${fthreadReaction}`
+  listarPorFThread(fThread : number, reaction?: string): Observable<FthreadReaction[]> {
+    var url = ""
+    if(typeof reaction!== 'undefined'){
+      url = `${this.API}/${fThread}/?reaction=${reaction}`
+    } else {
+      url = `${this.API}/${fThread}`
+    }
     return this.http.get<FthreadReaction[]>(url)
   }
 

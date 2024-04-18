@@ -8,22 +8,8 @@
 .box-like{
     display:flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 
-.icon-like,.icon-dislike{
-    color: #c0b4bc;
-    transition: linear 0.3s;
-}
 
   
-.icon-like:hover{
-    color: red;
-    transition: linear 0.3s;
-    cursor: pointer;
-}
-  
-.icon-dislike:hover{
-    color:blue;
-    transition: linear 0.3s;
-    cursor: pointer;
-}

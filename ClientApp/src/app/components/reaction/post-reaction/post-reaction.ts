@@ -1,5 +1,5 @@
 export interface PostReaction{
-    PostId: number
-    UserId: string
-    Reaction: boolean
+    postId: number
+    userId: string
+    reaction: boolean
 }

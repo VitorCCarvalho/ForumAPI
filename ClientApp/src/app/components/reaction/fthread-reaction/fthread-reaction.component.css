@@ -1,0 +1,30 @@
+.box-like{
+    display:flex;
+    flex-direction: column;
+}
+
+.likes, .dislikes{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #c0b4bc;
+    transition: linear 0.3s;
+    border: #c0b4bc solid 2px;
+    border-radius: 30%;
+    padding: 0.4rem;
+
+}
+
+.likes:hover{
+    color: red;
+    transition: linear 0.3s;
+    cursor: pointer;
+    border-color: red;
+}
+
+.dislikes:hover{
+    color:blue;
+    transition: linear 0.3s;
+    cursor: pointer;
+    border-color: blue;
+}

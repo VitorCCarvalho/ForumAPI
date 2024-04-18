@@ -10,7 +10,7 @@ import { SignUp } from './signup';
 })
 export class UserService {
 
-  headers = new HttpHeaders({ 'Content-Type': 'application/json', 'responseType': 'text' })
+  headers = new HttpHeaders({ 'responseType': 'text' })
 
   private readonly API = 'https://localhost:7082/user'
 
@@ -26,7 +26,7 @@ export class UserService {
     return this.http.get<User>(url)
   }
 
-  login(login: Login){
+  login(login: Login): Observable<string>{
     const url = `${this.API}/login`
     return this.http.post<string>(url, login, {headers: this.headers})
     

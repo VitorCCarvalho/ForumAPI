@@ -4,10 +4,8 @@
             <span matListItemTitle class="text-light text-wrap word-break">{{user.name}}</span>
             <span matListItemLine class="forum-desc text-light lh-sm word-break mb-2">{{post.text}}</span>
         </div>
-        <div class="box-like">
-            <fa-icon class="icon-like" [icon]="faHeart" size="lg"></fa-icon> 
-            <fa-icon class="icon-dislike" [icon]="faHeartBroken" size="lg"></fa-icon>
-        </div>
+        <app-post-reaction [postId]="id ? id : 0"></app-post-reaction>
     </div>
+    
     <mat-divider></mat-divider>
 </mat-list-item>

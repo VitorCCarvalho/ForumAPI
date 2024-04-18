@@ -1,4 +1,14 @@
 <div class="box-like">
-    <fa-icon class="icon-like" [icon]="faHeart" size="lg"></fa-icon> 
-    <fa-icon class="icon-dislike" [icon]="faHeartBroken" size="lg"></fa-icon>
+    <div class="likes">
+        <fa-icon class="icon-like" [icon]="faHeart" size="lg"></fa-icon> 
+        <div class="like-count">
+            {{likeCount}}
+        </div>
+    </div>
+    <div class="dislikes">
+        <fa-icon class="icon-dislike" [icon]="faHeartBroken" size="lg"></fa-icon>
+        <div class="dislike-count">
+            {{dislikeCount}}
+        </div>
+    </div>
 </div>
