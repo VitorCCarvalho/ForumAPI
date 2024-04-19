@@ -42,8 +42,6 @@
     transition: linear 0.3s;
 }
 
-
-
 .icon:hover + .text{
     color:#cacaca;
     transition: linear 0.3s;

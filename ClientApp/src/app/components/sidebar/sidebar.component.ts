@@ -32,10 +32,8 @@ export class SidebarComponent implements OnInit{
       password : "Abc1234;"
     }
     this.userService.login(login).subscribe((token) => {
-      console.log(token);
     }, 
     err => {
-      console.log(err.error.text)
       sessionStorage.setItem("jwt-session", err.error.text);
       this.getUserData();
     })
@@ -46,7 +44,6 @@ export class SidebarComponent implements OnInit{
       this.userJson = jwtDecode(this.userToken);
 
       this.username = this.userJson.username
-      console.log(this.userJson)
     }
   }
 }

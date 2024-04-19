@@ -1,14 +1,14 @@
 <div class="box-like">
-    <div class="likes">
+    <button [ngClass]="classLikes">
         <fa-icon class="icon-like" [icon]="faHeart" size="2x"></fa-icon> 
         <div class="like-count">
             {{likeCount}}
         </div>
-    </div>
-    <div class="dislikes">
+    </button>
+    <button [ngClass]="classDislikes">
         <fa-icon class="icon-dislike" [icon]="faHeartBroken" size="2x"></fa-icon>
         <div class="dislike-count">
             {{dislikeCount}}
         </div>
-    </div>
+    </button>
 </div>

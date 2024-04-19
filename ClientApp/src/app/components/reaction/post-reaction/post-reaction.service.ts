@@ -35,4 +35,9 @@ export class PostReactionService {
     const url = `${this.API}/${id}`
     return this.http.get<PostReaction>(url)
   }
+
+  acharReaction(id: number, userId: string): Observable<PostReaction>{
+    const url = `${this.API}/${id}/${userId}`
+    return this.http.get<PostReaction>(url)
+  }
 }

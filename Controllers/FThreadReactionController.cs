@@ -29,12 +29,12 @@ public class FThreadReactionController : ControllerBase
         return Created("FThread Reaction Created", fThreadReaction);
     }
 
-    //[HttpGet]
-    //public IEnumerable<ReadFThreadReactionDto> GetFThreadReactions([FromQuery] int take = 50)
-    //{
- 
-    //        return _mapper.Map<List<ReadFThreadReactionDto>>(_context.FThreadReaction.Take(take).ToList());
-    //}
+    [HttpGet]
+    public IEnumerable<ReadFThreadReactionDto> GetFThreadReactions([FromQuery] int take = 50)
+    {
+
+        return _mapper.Map<List<ReadFThreadReactionDto>>(_context.FThreadReaction.Take(take).ToList());
+    }
 
     [HttpGet("{fthreadId}")]
     public IEnumerable<ReadFThreadReactionDto> GetFThreadReactionPorFThread(int fthreadId, [FromQuery] string? reaction)
