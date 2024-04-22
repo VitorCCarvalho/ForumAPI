@@ -5,6 +5,9 @@ import { faCircleArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { UserService } from '../user/user.service';
 import { jwtDecode } from 'jwt-decode';
+import { MatDialog } from '@angular/material/dialog';
+
+import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -20,23 +23,18 @@ export class SidebarComponent implements OnInit{
 
   userJson : any
   username: string = "User"
-  constructor(private userService: UserService){}
+  constructor(private userService: UserService, public dialog: MatDialog){}
 
   ngOnInit(){
     this.getUserData();
   }
 
   loginUser(){
-    var login : Login = {
-      username : "testeUser4",
-      password : "Abc1234;"
-    }
-    this.userService.login(login).subscribe((token) => {
-    }, 
-    err => {
-      sessionStorage.setItem("jwt-session", err.error.text);
-      this.getUserData();
-    })
+    const dialogRef = this.dialog.open(LoginDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   getUserData(){

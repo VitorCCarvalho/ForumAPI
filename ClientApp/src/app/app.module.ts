@@ -21,13 +21,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ForumPageComponent } from './forum-page/forum-page.component';
 import { FthreadPageComponent } from './fthread-page/fthread-page.component';
 import { UserComponent } from './components/user/user.component';
-import { SignupPageComponent } from './signup-page/signup-page.component';
 import { NewThreadComponent } from './new-thread/new-thread.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { PostReactionComponent } from './components/reaction/post-reaction/post-reaction.component';
 import { FthreadReactionComponent } from './components/reaction/fthread-reaction/fthread-reaction.component';
+import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -42,11 +43,11 @@ import { FthreadReactionComponent } from './components/reaction/fthread-reaction
     ForumPageComponent,
     FthreadPageComponent,
     UserComponent,
-    SignupPageComponent,
     NewThreadComponent,
     SidebarComponent,
     PostReactionComponent,
     FthreadReactionComponent,
+    LoginDialogComponent,
     
   ],
   imports: [
@@ -58,7 +59,6 @@ import { FthreadReactionComponent } from './components/reaction/fthread-reaction
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'forum-page', component: ForumPageComponent},
       { path: 'fthread-page', component: FthreadPageComponent},
-      { path: 'signup-page', component: SignupPageComponent},
       { path: 'newThread-page', component: NewThreadComponent}
     ], 
     {onSameUrlNavigation: 'reload'}),
@@ -70,7 +70,8 @@ import { FthreadReactionComponent } from './components/reaction/fthread-reaction
     MatInputModule,
     MatFormFieldModule,
     MatSnackBarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
