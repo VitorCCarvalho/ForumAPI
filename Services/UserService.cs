@@ -40,7 +40,7 @@ public class UserService
 
         if (!resultado.Succeeded)
         {
-            throw new ApplicationException("Usuário não autenticado!");
+            return "unauthorized";
         }
 
         var user = _signInManager.UserManager.Users.FirstOrDefault(user => user.NormalizedUserName == dto.Username.ToUpper());

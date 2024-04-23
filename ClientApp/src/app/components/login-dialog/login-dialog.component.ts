@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Login } from '../user/login';
 import { UserService } from '../user/user.service';
 import { jwtDecode } from 'jwt-decode';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 
 @Component({
@@ -11,9 +12,9 @@ import { Router } from '@angular/router';
   templateUrl: './login-dialog.component.html',
   styleUrls: ['./login-dialog.component.css'],
 })
-export class LoginDialogComponent {
+export class LoginDialogComponent{
 
-  section: string = "login"
+  textResponse: string = "" 
 
   userFormControl = new FormControl('', [Validators.required]);
   passwordFormControl = new FormControl('', [Validators.required]);
@@ -25,16 +26,20 @@ export class LoginDialogComponent {
 
   constructor(private userService: UserService, private route: Router){}
 
+
   loginUser(user: string | null, password: string | null){
     var login : Login = {
       username : user? user : "",
       password : password? password: ""
     }
-    this.userService.login(login).subscribe((token) => {
+    this.userService.login(login).subscribe((userToken: any) => {
+      sessionStorage.setItem("jwt-session", userToken.token);
+      this.getUserData();
+      this.textResponse = "Login efetuado!";
     }, 
     err => {
-      sessionStorage.setItem("jwt-session", err.error.text);
-      this.getUserData();
+      console.log("não foi");
+      this.textResponse = err.error;
     })
   }
 
@@ -51,12 +56,5 @@ export class LoginDialogComponent {
     this.loginUser(this.userFormControl.value, this.passwordFormControl.value)
   }
 
-  changeSection(){
-    if(this.section == "login") {
-      this.section = "signup"
-    } else if(this.section == "signup"){
-      this.section = "login"
-    }
-  }
 }
 

@@ -29,12 +29,16 @@ export class SidebarComponent implements OnInit{
     this.getUserData();
   }
 
-  loginUser(){
+  openLoginDialog(){
     const dialogRef = this.dialog.open(LoginDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  closeLoginDialog(){
+    const dialogRef = this.dialog.closeAll()
   }
 
   getUserData(){

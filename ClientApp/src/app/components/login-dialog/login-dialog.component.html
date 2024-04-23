@@ -1,4 +1,4 @@
-<mat-dialog-content *ngIf="section=='login'">
+<mat-dialog-content>
   <h2 class="title-login" mat-dialog-title>Login</h2>
   <form class="form-login" (ngSubmit)="onSubmit()">
       <mat-form-field class="form-email">
@@ -15,7 +15,8 @@
 
       <button type="submit" class="btn-submit">Login</button>
     </form>
-    <a class="link-signup" (click)="changeSection()">Não possui conta? Cadastre-se aqui</a>
+    <a class="link-signup">Não possui conta? Cadastre-se aqui</a>
+    <div>{{textResponse}}</div>
 </mat-dialog-content>
 
 

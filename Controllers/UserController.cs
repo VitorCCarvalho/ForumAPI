@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ForumApp.Data.Dtos.Post;
 using ForumApp.Data.Dtos.User;
+using ForumApp.Data.Dtos.UserToken;
 using ForumApp.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +36,16 @@ public class UserController : ControllerBase
     public async Task<IActionResult> LoginUser(LoginUserDto dto)
     {
         var token = await _userService.Login(dto);
-        return Ok(token);
+
+        if(token == "unauthorized"){
+            return Unauthorized("Usuário ou senha incorretos");
+        }else
+        {
+            var userTokenDto = new ReadUserTokenDto();
+            userTokenDto.token = token;
+            return Ok(userTokenDto);
+        }
+        
     }
 
     /// <summary>
