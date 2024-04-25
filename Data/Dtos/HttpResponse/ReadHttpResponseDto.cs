@@ -2,8 +2,8 @@
 
 namespace ForumApp.Data.Dtos.UserToken;
 
-public class ReadUserTokenDto
+public class ReadHttpResponseDto
 {
     [Key]
-    public string token { get; set; }
+    public string response { get; set; }
 }

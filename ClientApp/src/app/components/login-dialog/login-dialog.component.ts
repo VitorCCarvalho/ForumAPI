@@ -1,10 +1,10 @@
+import { SidebarComponent } from './../sidebar/sidebar.component';
 import { Component, OnInit } from '@angular/core';
 import { Login } from '../user/login';
 import { UserService } from '../user/user.service';
 import { jwtDecode } from 'jwt-decode';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SidebarComponent } from '../sidebar/sidebar.component';
 
 
 @Component({
@@ -24,7 +24,7 @@ export class LoginDialogComponent{
   userJson : any
   username: string = "User"
 
-  constructor(private userService: UserService, private route: Router){}
+  constructor(private userService: UserService, private sidebar: SidebarComponent){}
 
 
   loginUser(user: string | null, password: string | null){
@@ -32,13 +32,13 @@ export class LoginDialogComponent{
       username : user? user : "",
       password : password? password: ""
     }
-    this.userService.login(login).subscribe((userToken: any) => {
-      sessionStorage.setItem("jwt-session", userToken.token);
+    this.userService.login(login).subscribe((httpResponse: any) => {
+      sessionStorage.setItem("jwt-session", httpResponse.response);
       this.getUserData();
       this.textResponse = "Login efetuado!";
+      
     }, 
     err => {
-      console.log("não foi");
       this.textResponse = err.error;
     })
   }
@@ -48,12 +48,15 @@ export class LoginDialogComponent{
       this.userJson = jwtDecode(this.userToken);
 
       this.username = this.userJson.username
-      this.route.navigate(['/']);
     }
   }
 
   onSubmit(){
     this.loginUser(this.userFormControl.value, this.passwordFormControl.value)
+  }
+
+  openSignUp(){
+    this.sidebar.switchDialogSection()
   }
 
 }

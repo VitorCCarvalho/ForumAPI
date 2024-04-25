@@ -29,6 +29,7 @@ import { PostReactionComponent } from './components/reaction/post-reaction/post-
 import { FthreadReactionComponent } from './components/reaction/fthread-reaction/fthread-reaction.component';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SignupDialogComponent } from './components/signup-dialog/signup-dialog.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     PostReactionComponent,
     FthreadReactionComponent,
     LoginDialogComponent,
+    SignupDialogComponent,
     
   ],
   imports: [

@@ -2,8 +2,8 @@
 
 namespace ForumApp.Models;
 
-public class UserToken
+public class HttpResponse
 {
     [Key]
-    public string token { get; set; }
+    public string response { get; set; }
 }

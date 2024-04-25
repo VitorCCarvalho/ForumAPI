@@ -18,7 +18,7 @@ export class UserService {
 
   criar(signup: SignUp): Observable<SignUp> {
     const url = `${this.API}/signup`
-    return this.http.post<SignUp>(url, signup)
+    return this.http.post<SignUp>(url, signup, {headers: this.headers})
   }
 
   buscarPorId(id: string): Observable<User> {

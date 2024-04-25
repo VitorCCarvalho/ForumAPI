@@ -5,6 +5,7 @@ using ForumApp.Data.Dtos.UserToken;
 using ForumApp.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
 
 namespace ForumApp.Controllers;
 
@@ -25,8 +26,18 @@ public class UserController : ControllerBase
     [HttpPost("signup")]
     public async Task<IActionResult> SignUpUser(CreateUserDto dto)
     {
-        await _userService.SignUp(dto);
-        return Ok("User signed up");
+        var result = await _userService.SignUp(dto);
+        if(result == "error")
+        {
+            return BadRequest(dto);
+        }
+        else
+        {
+            var responseDto = new ReadHttpResponseDto();
+            responseDto.response = result;
+            return Ok(responseDto);
+        }
+        
     }
 
     /// <summary>
@@ -41,9 +52,9 @@ public class UserController : ControllerBase
             return Unauthorized("Usuário ou senha incorretos");
         }else
         {
-            var userTokenDto = new ReadUserTokenDto();
-            userTokenDto.token = token;
-            return Ok(userTokenDto);
+            var responseDto = new ReadHttpResponseDto();
+            responseDto.response = token;
+            return Ok(responseDto);
         }
         
     }

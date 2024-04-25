@@ -22,7 +22,7 @@ public class UserService
 
 
 
-    public async Task SignUp(CreateUserDto dto)
+    public async Task<string> SignUp(CreateUserDto dto)
     {
         User user = _mapper.Map<User>(dto);
 
@@ -30,8 +30,10 @@ public class UserService
 
         if (!resultado.Succeeded)
         {
-            throw new ApplicationException("Falha ao cadastrar usuário!");
+            return "error";
         }
+
+        return "User signed up";
     }
 
     internal async Task<string> Login(LoginUserDto dto)
