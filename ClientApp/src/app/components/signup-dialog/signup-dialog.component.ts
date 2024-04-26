@@ -47,7 +47,7 @@ onSubmit(){
     repassword: this.repassword.value? this.repassword.value : ""
   }
 
-  this.userService.criar(signup).subscribe(() => {
+  this.userService.criar(signup).subscribe((httpResponse: any) => {
     this.textResponse = "Usuário cadastrado"
   }, error =>{
     this.textResponse = "Erro no cadastro"

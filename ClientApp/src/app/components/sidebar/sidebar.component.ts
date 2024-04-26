@@ -18,7 +18,7 @@ import { SignupDialogComponent } from '../signup-dialog/signup-dialog.component'
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent implements OnInit{
+export class SidebarComponent{
   faHouse = faHouse
   faCircleArrowUp = faCircleArrowUp
   faCircleUser = faCircleUser
@@ -28,13 +28,12 @@ export class SidebarComponent implements OnInit{
   userToken = sessionStorage.getItem("jwt-session")
 
   userJson : any
-  username: string = "User"
+  name: string | null = sessionStorage.getItem("name")? sessionStorage.getItem("name") : "Usuário"
+
   constructor(private userService: UserService, public dialog: MatDialog){
   }
 
-  ngOnInit(){
-    this.getUserData();
-  }
+
 
   openLoginDialog(){
     if(this.dialogSection == "login"){
@@ -59,11 +58,4 @@ export class SidebarComponent implements OnInit{
     }
   }
 
-  getUserData(){
-    if(this.userToken != null){
-      this.userJson = jwtDecode(this.userToken);
-
-      this.username = this.userJson.username
-    }
-  }
 }

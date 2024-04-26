@@ -3,3 +3,7 @@
     color: white;
     margin-bottom: 1rem;
 }
+
+.link-newthread:hover{
+    cursor: pointer;
+}

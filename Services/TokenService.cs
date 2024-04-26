@@ -20,6 +20,7 @@ public class TokenService
         Claim[] claims = new Claim[]
         {
             new Claim("username", user.UserName),
+            new Claim("name", user.Name),
             new Claim("id", user.Id),
         };
 

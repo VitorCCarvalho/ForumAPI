@@ -19,11 +19,6 @@ export class LoginDialogComponent{
   userFormControl = new FormControl('', [Validators.required]);
   passwordFormControl = new FormControl('', [Validators.required]);
 
-  userToken = sessionStorage.getItem("jwt-session")
-
-  userJson : any
-  username: string = "User"
-
   constructor(private userService: UserService, private sidebar: SidebarComponent){}
 
 
@@ -34,7 +29,7 @@ export class LoginDialogComponent{
     }
     this.userService.login(login).subscribe((httpResponse: any) => {
       sessionStorage.setItem("jwt-session", httpResponse.response);
-      this.getUserData();
+      this.setUserSession();
       this.textResponse = "Login efetuado!";
       
     }, 
@@ -43,11 +38,14 @@ export class LoginDialogComponent{
     })
   }
 
-  getUserData(){
-    if(this.userToken != null){
-      this.userJson = jwtDecode(this.userToken);
+  setUserSession(){
+    var jwt = sessionStorage.getItem("jwt-session")
+    if(jwt != null){
+      var userJson: any = jwtDecode(jwt);
 
-      this.username = this.userJson.username
+      sessionStorage.setItem("username", userJson.username)
+      sessionStorage.setItem("name", userJson.name)
+
     }
   }
 
