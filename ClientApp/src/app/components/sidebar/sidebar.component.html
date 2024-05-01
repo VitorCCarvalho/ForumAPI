@@ -18,23 +18,23 @@
         <div class="sidebar-elem text text-top-voted">
             Mais votados
         </div>
-        <div class="sidebar-elem icon top-voted">
+        <div class="sidebar-elem icon top-voted" [routerLink]="['/mostliked-page']" [queryParams]="{period: 1}">
             <fa-icon [icon]="faCircleArrowUp" size="1x"></fa-icon>
         </div>
-        <div class="sidebar-elem text today">
+        <div class="sidebar-elem text today" [routerLink]="['/mostliked-page']" [queryParams]="{period: 1}">
             Hoje
 
         </div>
-        <div class="sidebar-elem icon last-week">
+        <div class="sidebar-elem icon last-week" [routerLink]="['/mostliked-page']" [queryParams]="{period: 7}">
             <fa-icon [icon]="faCircleArrowUp" size="1x"></fa-icon>
         </div>
-        <div class="sidebar-elem text last-week">
+        <div class="sidebar-elem text last-week" [routerLink]="['/mostliked-page']" [queryParams]="{period: 7}">
             Última Semana
         </div>
-        <div class="sidebar-elem icon last-month">
+        <div class="sidebar-elem icon last-month" [routerLink]="['/mostliked-page']" [queryParams]="{period: 30}">
             <fa-icon [icon]="faCircleArrowUp" size="1x"></fa-icon>
         </div>
-        <div class="sidebar-elem text last-month">
+        <div class="sidebar-elem text last-month" [routerLink]="['/mostliked-page']" [queryParams]="{period: 30}">
             Último Mês
         </div>
     </div>

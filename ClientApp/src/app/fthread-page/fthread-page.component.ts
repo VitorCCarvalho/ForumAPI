@@ -32,7 +32,7 @@ export class FthreadPageComponent implements OnInit{
     sticky: false,
     active: true,
     dateCreated:  new Date("2024-01-25T11:23:31.3875008-03:00"),
-    startedByUserId: "9239a0ee-71d6-4984-8a71-075d68bf31a7",
+    userId: "9239a0ee-71d6-4984-8a71-075d68bf31a7",
     locked: false,
     posts: []
   };
@@ -65,8 +65,8 @@ export class FthreadPageComponent implements OnInit{
         this.fthread = fthread
 
       })
-      if(this.fthread.startedByUserId){
-        this.userService.buscarPorId(this.fthread.startedByUserId).subscribe((user) =>{
+      if(this.fthread.userId){
+        this.userService.buscarPorId(this.fthread.userId).subscribe((user) =>{
           this.user = user
         })
       }

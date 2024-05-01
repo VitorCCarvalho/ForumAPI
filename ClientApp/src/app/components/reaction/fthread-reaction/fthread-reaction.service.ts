@@ -35,6 +35,10 @@ export class FthreadReactionService {
     return this.http.get<FthreadReaction>(url)
   }
 
+  buscarScore(id: number): Observable<number> {
+    const url = `${this.API}/score/${id}`
+    return this.http.get<number>(url)
+  }
   acharReaction(id: number, userId: string): Observable<FthreadReaction>{
     const url = `${this.API}/${id}/${userId}`
     return this.http.get<FthreadReaction>(url)

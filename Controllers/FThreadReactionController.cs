@@ -4,6 +4,7 @@ using ForumApp.Data.Dtos.FThread;
 using ForumApp.Data.Dtos.FThreadReaction;
 using ForumApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace ForumApp.Controllers;
 
@@ -51,6 +52,17 @@ public class FThreadReactionController : ControllerBase
         {
             return _mapper.Map<List<ReadFThreadReactionDto>>(_context.FThreadReaction.Where(fthreadReaction => fthreadReaction.ThreadId == fthreadId).ToList());
         }  
+    }
+
+    [Route("score/{fthreadId}")]
+    [HttpGet]
+    public int GetFThreadReactionScore(int fthreadId)
+    {
+        int dislikes = _context.FThreadReaction.Where(fthreadReaction => fthreadReaction.ThreadId == fthreadId &&  !fthreadReaction.Reaction).Count();
+
+        int likes = _context.FThreadReaction.Where(fthreadReaction => fthreadReaction.ThreadId == fthreadId & fthreadReaction.Reaction == true).Count();
+
+        return likes - dislikes;
     }
 
 

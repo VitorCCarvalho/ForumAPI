@@ -50,6 +50,16 @@ public class FThreadController : ControllerBase
         }
     }
 
+    [Route("most-voted/{period}")]
+    [HttpGet]
+    public IEnumerable<ReadFThreadDto> GetFThreads(int period)
+    {
+
+            return _mapper.Map<List<ReadFThreadDto>>(_context.Threads.Where(fthread => fthread.DateCreated >= DateTime.Today.AddDays(-period)).ToList());
+        
+        
+    }
+
     /// <summary>
     /// Retorna a thread que possui fthreadId como ID.
     /// </summary>
@@ -58,6 +68,8 @@ public class FThreadController : ControllerBase
     {
         return _mapper.Map<ReadFThreadDto>(_context.Threads.FirstOrDefault(fthread => fthread.Id == fthreadId));
     }
+
+
 
     /// <summary>
     /// Atualiza a thread que possui fthreadId como ID.

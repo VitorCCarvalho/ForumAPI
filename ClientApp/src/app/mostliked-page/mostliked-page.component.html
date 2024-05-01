@@ -1,0 +1,14 @@
+<div class="container">
+    <mat-nav-list>
+        <div mat-subheader>
+                <h3 *ngIf="period == 1"class="title">Top Threads de Hoje</h3>
+                <h3 *ngIf="period == 7"class="title">Top Threads da Semana</h3>
+                <h3 *ngIf="period == 30"class="title">Top Threads do Mês</h3>
+        </div>
+
+        <div *ngFor="let fthread of listaFThreads">
+            <app-fthread [id]="fthread.id? fthread.id : -1" [showForum]="true"></app-fthread>
+            <mat-divider></mat-divider>
+        </div>
+    </mat-nav-list>
+</div>

@@ -1,8 +1,11 @@
+import { FthreadReactionService } from './../reaction/fthread-reaction/fthread-reaction.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { FThread } from './fthread';
 import { FThreadService } from './fthread.service';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeartBroken } from '@fortawesome/free-solid-svg-icons';
+import { UserService } from '../user/user.service';
+import { ForumService } from '../forum/forum.service';
 
 @Component({
   selector: 'app-fthread',
@@ -14,7 +17,10 @@ export class FthreadComponent implements OnInit{
   faHeartBroken = faHeartBroken
   isHover = false
   
-  constructor(private service : FThreadService){}
+  constructor(private fthreadService : FThreadService, 
+              private userService: UserService, 
+              private forumService: ForumService,
+              private fthreadReactionService: FthreadReactionService){}
 
   @Input() id : number = 0
   fthread : FThread = {
@@ -25,14 +31,36 @@ export class FthreadComponent implements OnInit{
     "sticky": false,
     "active": true,
     "dateCreated": new Date("2024-01-17T11:56:22.365236"),
-    "startedByUserId": "userId",
+    "userId": "userId",
     "locked": false,
     "posts": []
   }
 
+  name: string = "Usuario"
+  forum: string = "Forum"
+  @Input() showForum: boolean = false
+  score: number = 0
+
   ngOnInit(): void {
-    this.service.buscarPorId(this.id).subscribe((fthread) =>{
+    this.fthreadService.buscarPorId(this.id).subscribe((fthread) =>{
       this.fthread = fthread;
+
+      if(this.fthread.userId){
+        this.userService.buscarPorId(this.fthread.userId).subscribe((user) => {
+          this.name = user.name
+        })
+        this.fthreadReactionService.buscarScore(this.id).subscribe((score) => {
+          this.score = score
+        })
+  
+      }
+
+      if(this.fthread.forumID){
+        this.forumService.buscarPorId(this.fthread.forumID).subscribe((forum) => {
+          this.forum = forum.name
+        })
+  
+      }
     });
   }
 

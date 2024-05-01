@@ -7,7 +7,7 @@ export interface FThread {
   sticky?: boolean
   active?: boolean
   dateCreated?: Date
-  startedByUserId?: string
+  userId?: string
   locked?: boolean
   posts?: Post[]
 }

@@ -28,7 +28,7 @@ export class NewThreadComponent {
         forumID: numberForumId,
         name: this.newThreadForm.controls.title.value,
         text: this.newThreadForm.controls.text.value,
-        startedByUserId: "94c5d3db-e8e5-4381-be59-c491fef4fe1e"
+        userId: "94c5d3db-e8e5-4381-be59-c491fef4fe1e"
       }
 
       this.service.criar(fthread).subscribe(() => {

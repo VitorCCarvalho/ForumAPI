@@ -21,6 +21,11 @@ export class FThreadService {
     return this.http.get<FThread[]>(url)
   }
 
+  listarMostLiked(period: number): Observable<FThread[]> {
+    const url = `${this.API}/most-liked/${period}`
+    return this.http.get<FThread[]>(url)
+  } 
+
   criar(fthread: FThread): Observable<FThread> {
     return this.http.post<FThread>(this.API, fthread)
   }

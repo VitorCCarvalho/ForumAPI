@@ -30,6 +30,7 @@ import { FthreadReactionComponent } from './components/reaction/fthread-reaction
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SignupDialogComponent } from './components/signup-dialog/signup-dialog.component';
+import { MostlikedPageComponent } from './mostliked-page/mostliked-page.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { SignupDialogComponent } from './components/signup-dialog/signup-dialog.
     FthreadReactionComponent,
     LoginDialogComponent,
     SignupDialogComponent,
+    MostlikedPageComponent,
     
   ],
   imports: [
@@ -61,7 +63,8 @@ import { SignupDialogComponent } from './components/signup-dialog/signup-dialog.
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'forum-page', component: ForumPageComponent},
       { path: 'fthread-page', component: FthreadPageComponent},
-      { path: 'newThread-page', component: NewThreadComponent}
+      { path: 'newThread-page', component: NewThreadComponent},
+      { path: 'mostliked-page', component: MostlikedPageComponent},
     ], 
     {onSameUrlNavigation: 'reload'}),
     FontAwesomeModule,
