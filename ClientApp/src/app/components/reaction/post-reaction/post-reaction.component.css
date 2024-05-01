@@ -1,6 +1,25 @@
+.box-reaction{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .box-like{
     display:flex;
     flex-direction: column;
+}
+
+.positive{
+    color: #ff5454;
+    font-size:small;
+}
+
+.neutral{
+    color: #c0b4bc;
+}
+
+.negative{
+    color: #616bff;
 }
 
 .likes, .dislikes{
@@ -9,28 +28,26 @@
     gap: 1rem;
     color: #c0b4bc;
     transition: linear 0.3s;
-    border: #c0b4bc solid 2px;
-    border-radius: 30%;
-    padding: 0.15rem;
+    border: 0px;
+    padding: 0.1rem;
     background-color: transparent;
+
 }
 
 .likes:hover{
-    color: red;
+    color: #ff5454;
     transition: linear 0.3s;
     cursor: pointer;
-    border-color: red;
 }
 
 .likes-selected{
     display: flex;
     align-items: center;
     gap: 1rem;
-    color: red;
+    color: #ff5454;
     cursor: pointer;
     transition: linear 0.3s;
-    border: red solid 2px;
-    border-radius: 30%;
+    border: 0px;
     padding: 0.15rem;
     background-color: transparent;
 }
@@ -43,21 +60,19 @@
 }
 
 .dislikes:hover{
-    color:blue;
+    color:#616bff;
     transition: linear 0.3s;
     cursor: pointer;
-    border-color: blue;
 }
 
 .dislikes-selected{
     display: flex;
     align-items: center;
     gap: 1rem;
-    color: blue;
+    color: #616bff;
     cursor: pointer;
     transition: linear 0.3s;
-    border: blue solid 2px;
-    border-radius: 30%;
+    border: 0px;
     padding: 0.15rem;
     background-color: transparent;
 }
@@ -68,6 +83,3 @@
     cursor: pointer;
     border-color: #c0b4bc;
 }
-
-
-

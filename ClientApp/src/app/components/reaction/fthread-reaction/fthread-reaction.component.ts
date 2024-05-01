@@ -1,8 +1,8 @@
 import { FthreadReactionService } from './fthread-reaction.service';
 import { Component, Input, OnInit } from '@angular/core';
 
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { faHeartBroken } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FthreadReaction } from './fthread-reaction';
 import { jwtDecode } from 'jwt-decode';
 @Component({
@@ -11,8 +11,8 @@ import { jwtDecode } from 'jwt-decode';
   styleUrls: ['./fthread-reaction.component.css']
 })
 export class FthreadReactionComponent implements OnInit{
-  faHeart = faHeart
-  faHeartBroken = faHeartBroken
+  faPlus = faPlusCircle
+  faMinus = faMinusCircle
 
   constructor(private service : FthreadReactionService){}
 
@@ -21,6 +21,8 @@ export class FthreadReactionComponent implements OnInit{
   listaFthreadReactions : FthreadReaction[] = []
   likes : FthreadReaction[]  = []
   dislikes : FthreadReaction[] = [] 
+
+  score: number = 0
 
   classLikes: string = "likes"
   classDislikes: string = "dislikes"
@@ -38,6 +40,10 @@ export class FthreadReactionComponent implements OnInit{
 
       this.verifyLike()
       this.verifyDislike();
+    })
+
+    this.service.buscarScore(numberFThreadId).subscribe((score) => {
+      this.score = score
     })
   }
 
@@ -75,6 +81,5 @@ export class FthreadReactionComponent implements OnInit{
       })
 
     }
-
   }
 }

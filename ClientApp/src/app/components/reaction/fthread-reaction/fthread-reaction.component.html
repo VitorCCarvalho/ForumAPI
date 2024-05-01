@@ -1,14 +1,23 @@
 <div class="box-like">
-    <button [ngClass]="classLikes">
-        <fa-icon class="icon-like" [icon]="faHeart" size="2x"></fa-icon> 
-        <div class="like-count">
-            {{likeCount}}
+
+    <div class="box-reaction">
+        <button [ngClass]="classLikes">
+            <fa-icon class="icon-like" [icon]="faPlus" size="lg"></fa-icon> 
+        </button>
+        <div *ngIf="score > 0" class="positive">
+            +{{score}}
         </div>
-    </button>
-    <button [ngClass]="classDislikes">
-        <fa-icon class="icon-dislike" [icon]="faHeartBroken" size="2x"></fa-icon>
-        <div class="dislike-count">
-            {{dislikeCount}}
-        </div>
-    </button>
+        <div *ngIf="score == 0" class="item-score neutral">
+                {{score}}
+        </div> 
+        <div *ngIf="score <0" class="item-score negative">
+                {{score}}
+        </div> 
+        <button [ngClass]="classDislikes">
+            <fa-icon class="icon-dislike" [icon]="faMinus" size="lg"></fa-icon>
+        </button> 
+    </div>
+     
+
+    
 </div>

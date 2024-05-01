@@ -36,6 +36,11 @@ export class PostReactionService {
     return this.http.get<PostReaction>(url)
   }
 
+  buscarScore(id: number): Observable<number> {
+    const url = `${this.API}/score/${id}`
+    return this.http.get<number>(url)
+  }
+
   acharReaction(id: number, userId: string): Observable<PostReaction>{
     const url = `${this.API}/${id}/${userId}`
     return this.http.get<PostReaction>(url)

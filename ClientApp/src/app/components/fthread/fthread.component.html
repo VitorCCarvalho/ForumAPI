@@ -6,7 +6,14 @@
                         <span matListItemLine class="list-item-author">Enviado por: {{name}}</span>
                         <span *ngIf="showForum" matListItemLine class="list-item-title">Fórum: {{forum}}</span>
                 </div>
-                <div class="item-score">
+
+                <div *ngIf="score > 0" ngclass="item-score positive">
+                        +{{score}}
+                </div>
+                <div *ngIf="score == 0;" ngclass="item-score neutral">
+                        {{score}}
+                </div> 
+                <div *ngIf="score <0;" ngclass="item-score negative">
                         {{score}}
                 </div>    
         </div>

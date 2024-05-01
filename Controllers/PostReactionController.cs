@@ -62,6 +62,17 @@ public class PostReactionController : ControllerBase
         }
     }
 
+    [Route("score/{postId}")]
+    [HttpGet]
+    public int GetPostReactionScore(int postId)
+    {
+        int dislikes = _context.PostReaction.Where(postReaction => postReaction.PostId == postId && !postReaction.Reaction).Count();
+
+        int likes = _context.PostReaction.Where(postReaction => postReaction.PostId == postId & postReaction.Reaction == true).Count();
+
+        return likes - dislikes;
+    }
+
     [HttpGet("{postId}/{userId}")]
     public ReadPostReactionDto GetPostReaction(int postId, string UserId)
     {
@@ -69,19 +80,19 @@ public class PostReactionController : ControllerBase
     }
 
     [HttpPut("{fthreadId}/{userId}")]
-    public IActionResult PutPostReaction([FromQuery] int postId, [FromQuery] string UserId, [FromBody] UpdatePostDto dto)
+    public IActionResult PutPostReaction([FromQuery] int fthreadId, [FromQuery] string UserId, [FromBody] UpdatePostDto dto)
     {
-        var fthreadReaction = _context.PostReaction.FirstOrDefault(fthreadReaction => fthreadReaction.PostId == postId & fthreadReaction.UserId == UserId);
-        if (fthreadReaction == null)
+        var postReaction = _context.PostReaction.FirstOrDefault(postReaction => postReaction.PostId == fthreadId & postReaction.UserId == UserId);
+        if (postReaction == null)
         {
             return NotFound();
         }
-        _mapper.Map(dto, fthreadReaction);
+        _mapper.Map(dto, postReaction);
         _context.SaveChanges();
         return NoContent();
     }
 
-    [HttpDelete("{fthreadId}/{userId}")]
+    [HttpDelete("{postId}/{userId}")]
     public IActionResult DeleteFThread(int postId, string UserId)
     {
         var postReaction = _context.PostReaction.FirstOrDefault(postReaction => postReaction.PostId == postId & postReaction.UserId == UserId);

@@ -1,9 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { faHeartBroken } from '@fortawesome/free-solid-svg-icons';
+
 import { PostReaction } from './post-reaction';
 import { PostReactionService } from './post-reaction.service';
 import { jwtDecode } from 'jwt-decode';
+
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-post-reaction',
@@ -11,8 +13,8 @@ import { jwtDecode } from 'jwt-decode';
   styleUrls: ['./post-reaction.component.css']
 })
 export class PostReactionComponent {
-  faHeart = faHeart
-  faHeartBroken = faHeartBroken
+  faPlus = faPlusCircle
+  faMinus = faMinusCircle
   
   constructor(private service: PostReactionService){}
 
@@ -27,6 +29,7 @@ export class PostReactionComponent {
   likeCount: number = 0
   dislikeCount: number = 0
   
+  score: number = 0
 
   ngOnInit(): void{
     this.service.listarPorPost(this.postId).subscribe((listaPostReactions) => {
@@ -41,6 +44,10 @@ export class PostReactionComponent {
 
     this.verifyLike()
     this.verifyDislike();
+
+    this.service.buscarScore(this.postId).subscribe((score) => {
+      this.score = score
+    })
   }
   
   verifyLike(){
