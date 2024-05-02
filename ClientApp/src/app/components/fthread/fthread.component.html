@@ -7,15 +7,7 @@
                         <span *ngIf="showForum" matListItemLine class="list-item-title">Fórum: {{forum}}</span>
                 </div>
 
-                <div *ngIf="score > 0" ngclass="item-score positive">
-                        +{{score}}
-                </div>
-                <div *ngIf="score == 0;" ngclass="item-score neutral">
-                        {{score}}
-                </div> 
-                <div *ngIf="score <0;" ngclass="item-score negative">
-                        {{score}}
-                </div>    
+                <app-fthread-reaction [fthreadId]="id? id : 0"></app-fthread-reaction>   
         </div>
         
 </mat-list-item>

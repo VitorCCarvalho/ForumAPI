@@ -22,7 +22,7 @@ export class FthreadPageComponent implements OnInit{
   faHeart = faHeart
   faHeartBroken = faHeartBroken
 
-  fthreadId : string | null = ""
+  fthreadId : number = 0
   listaPosts : Post[] = [];
   fthread: FThread ={
     id: 0,
@@ -55,13 +55,13 @@ export class FthreadPageComponent implements OnInit{
               private _snackBar: MatSnackBar){}
   
   ngOnInit(): void {
-    this.fthreadId = this.route.snapshot.queryParamMap.get('fthreadId');
-    if(this.fthreadId){
-      var numberFThreadId : number = +this.fthreadId
-      this.postService.listarPorFThread(numberFThreadId).subscribe((listaPosts) => {
+    var fthreadId = this.route.snapshot.queryParamMap.get('fthreadId');
+    if(fthreadId){
+      this.fthreadId = +fthreadId
+      this.postService.listarPorFThread(this.fthreadId).subscribe((listaPosts) => {
         this.listaPosts = listaPosts
       })
-      this.fthreadService.buscarPorId(numberFThreadId).subscribe((fthread) => {
+      this.fthreadService.buscarPorId(this.fthreadId).subscribe((fthread) => {
         this.fthread = fthread
 
       })

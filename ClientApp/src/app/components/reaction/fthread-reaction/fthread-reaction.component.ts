@@ -16,7 +16,7 @@ export class FthreadReactionComponent implements OnInit{
 
   constructor(private service : FthreadReactionService){}
 
-  @Input() fthreadId: string = ""
+  @Input() fthreadId: number = 0
   @Input() userId: string = ""
   listaFthreadReactions : FthreadReaction[] = []
   likes : FthreadReaction[]  = []
